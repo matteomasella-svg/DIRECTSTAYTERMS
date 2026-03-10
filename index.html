@@ -1,15 +1,1281 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corrected Index</title>
+    <title>2M Apartments - Policy & Generatore Contratti 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-dark-1: #021216; --bg-dark-2: #062c30; --brand-primary: #4FD1C5; --brand-accent: #FF6B6B; --brand-gold: #FFD700; --text-main: #f0f0f0; --text-muted: #b0bec5; --glass-container: rgba(10, 30, 35, 0.95); --glass-border: rgba(255, 255, 255, 0.15); --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.6); --font-signature: 'Caveat', cursive; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: radial-gradient(circle at top, var(--bg-dark-2), var(--bg-dark-1)); background-attachment: fixed; color: var(--text-main); line-height: 1.6; margin: 0; padding: 15px; min-height: 100vh; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        
+        /* ICONE STILE VETRO INCISO E BOX */
+        .svg-engraved { width: 22px; height: 22px; fill: rgba(255, 255, 255, 0.05); stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0px 1px 0px rgba(255,255,255,0.2)) drop-shadow(0px -1px 2px rgba(0,0,0,0.6)); vertical-align: middle; }
+        .svg-inline { width: 18px; height: 18px; vertical-align: text-bottom; margin-right: 8px; color: var(--brand-primary); }
+        
+        .policy-box { display: flex; gap: 15px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); padding: 18px; border-radius: 12px; margin-bottom: 12px; align-items: flex-start; transition: all 0.3s ease; }
+        .policy-box:hover { background: rgba(255, 255, 255, 0.06); border-color: var(--brand-primary); }
+        .policy-icon { flex-shrink: 0; width: 28px; height: 28px; color: var(--brand-primary); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0px 1px 0px rgba(255,255,255,0.1)) drop-shadow(0px -1px 2px rgba(0,0,0,0.8)); fill: rgba(255,255,255,0.05); }
+        .policy-text { margin: 0; font-size: 0.95em; line-height: 1.6; color: var(--text-main); }
+        .policy-text strong { color: var(--brand-gold); }
+        .policy-title { color: var(--brand-accent); display: block; font-size: 1.1em; font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px;}
+
+        #login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, #062c30, #010b0e); z-index: 9999; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); transition: opacity 0.5s; }
+        .login-box { background: rgba(10, 30, 35, 0.9); border: 1px solid var(--brand-primary); padding: 40px; border-radius: 24px; text-align: center; max-width: 350px; width: 90%; }
+        .login-input { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.2em; text-align: center; margin-bottom: 15px; letter-spacing: 5px; outline: none; }
+        .login-btn { width: 100%; padding: 15px; border-radius: 12px; background: var(--brand-primary); color: #002e33; font-weight: bold; border: none; cursor: pointer; }
+        
+        .main-content-wrapper { filter: blur(5px); opacity: 0; transition: all 0.5s ease; }
+        .main-content-wrapper.unlocked { filter: blur(0); opacity: 1; }
+        .container { max-width: 1100px; margin: auto; padding: 25px 30px 40px 30px; border-radius: 24px; background: var(--glass-container); border: 1px solid var(--glass-border); box-shadow: var(--shadow-soft); }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); padding-bottom: 20px; margin-bottom: 30px; }
+        
+        .comparison-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 30px 0; }
+        @media (max-width: 850px) { .comparison-grid { grid-template-columns: 1fr; } }
+        .comp-card { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; }
+        .comp-card.featured { border: 2px solid var(--brand-gold); background: rgba(255, 215, 0, 0.04); }
+        .comp-card h3 { color: #fff; margin-top: 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; font-size: 1.1em; display: flex; align-items: center; gap: 10px; }
+        .comp-card ul { list-style: none; padding: 0; margin: 15px 0; }
+        .comp-card li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 0.9em; line-height: 1.5; display: flex; align-items: flex-start; gap: 10px; }
+        .icon-bullet { position: absolute; left: 0; top: 3px; width: 18px; height: 18px; color: var(--brand-primary); flex-shrink: 0; filter: drop-shadow(0px 1px 0px rgba(255,255,255,0.1)) drop-shadow(0px -1px 2px rgba(0,0,0,0.8)); fill: rgba(255,255,255,0.05); }
+        .icon-gold { color: var(--brand-gold); }
+        .badge-info { background: rgba(79, 209, 197, 0.2); color: var(--brand-primary); padding: 4px 10px; border-radius: 12px; font-size: 0.8em; font-weight: 700; display: inline-block; margin-bottom: 10px;}
+        .badge-gold { background: var(--brand-gold); color: #000; padding: 4px 10px; border-radius: 12px; font-size: 0.8em; font-weight: 800; display: inline-block; margin-bottom: 10px;}
+
+        .accordion { background: rgba(255, 255, 255, 0.05); color: #fff; cursor: pointer; padding: 20px 30px; width: 100%; border: 1px solid var(--glass-border); text-align: left; border-radius: 12px; margin-top: 12px; font-weight: 600; display: flex; align-items: center; justify-content: space-between; font-size: 1.05em;}
+        .accordion.active { background: rgba(79, 209, 197, 0.15); color: var(--brand-primary); border-radius: 12px 12px 0 0; border-color: var(--brand-primary); border-bottom: none; }
+        .panel { padding: 15px 30px; background: rgba(0, 0, 0, 0.2); max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; border: 1px solid var(--brand-primary); border-top: none; border-radius: 0 0 12px 12px; color: var(--text-muted); }
+        
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 10000; display: none; align-items: center; justify-content: center; }
+        .modal-content { background: var(--bg-dark-2); border: 1px solid var(--brand-gold); padding: 30px; border-radius: 16px; width: 90%; max-width: 600px; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 50px rgba(0,0,0,0.8); }
+        .modal-content h3 { color: var(--brand-gold); border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; margin-top: 0; }
+        .crud-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; gap: 15px; }
+        .crud-row label { flex: 2; font-size: 0.95em; color: var(--text-muted); }
+        .crud-row input { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid var(--brand-primary); background: rgba(0,0,0,0.5); color: #fff; font-size: 1.1em; text-align: right; }
+        .crud-total { font-size: 1.4em; font-weight: bold; color: var(--brand-primary); text-align: right; margin: 20px 0; padding-top: 15px; border-top: 2px dashed var(--glass-border); }
+        .sim-box { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; margin-bottom: 20px; display: none; border-left: 3px solid var(--brand-accent); }
+        
+        .admin-form { padding: 20px 0; }
+        .admin-form label { font-weight: bold; color: var(--brand-gold); display: block; margin-top: 15px; margin-bottom: 5px; }
+        .admin-form .form-row { display: flex; gap: 15px; flex-wrap: wrap; align-items: center; }
+        .admin-form .form-row > div { flex: 1; min-width: 150px; }
+        .form-input { width: 100%; padding: 12px; border-radius: 8px; background: rgba(0,0,0,0.5); color: #fff; border: 1px solid var(--brand-gold); font-family: inherit; font-size: 1em; box-sizing: border-box; outline:none; }
+        .form-input:focus { border-color: var(--brand-primary); }
+        .generate-btn { background: var(--brand-gold); color: #000; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; font-size: 1.1em; margin-top: 25px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 10px;}
+        .btn-blue { background: var(--brand-primary); color: #002e33; }
+        .btn-outline { background: transparent; border: 1px solid var(--brand-primary); color: var(--brand-primary); }
+
+        #guest-contract-view { display: none; margin-top: 40px; }
+        .contract-paper { background: #fff; color: #000; padding: 40px; border-radius: 8px; font-size: 10pt; line-height: 1.6; text-align: justify; margin-bottom: 80px; box-shadow: 0 5px 25px rgba(0,0,0,0.5); }
+        .contract-paper h2 { color: #000; font-size: 1.4em; border-bottom: 2px solid #ccc; padding-bottom: 5px; text-align: center; margin-bottom: 5px; }
+        .contract-paper h3 { color: #000; font-size: 1.1em; margin-top: 20px; margin-bottom: 5px; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+        .contract-paper p { margin-top: 5px; margin-bottom: 12px; }
+        
+        .contract-summary-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; border: 1px solid #000; }
+        .contract-summary-table th, .contract-summary-table td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+        .contract-summary-table th { background: #f0f0f0; width: 45%; text-align: left; font-weight: bold; }
+        
+        .signature-area { display: flex; justify-content: space-between; margin-top: 50px; text-align: center; }
+        .signature-box { width: 45%; border-top: 1px solid #000; padding-top: 10px; margin-top: 60px; min-height: 80px; }
+        
+        /* FONT SCRITTO A MANO PER LA FIRMA DELL'OSPITE */
+        .signature-field { font-family: var(--font-signature); font-size: 2.5em; color: #003a40; display: inline-block; min-height: 50px; margin-top: 10px; border-bottom: 1px solid #000; min-width: 250px; text-align: center; }
+        
+        .double-signature-block { border: 1px solid #000; padding: 20px; margin-top: 40px; border-radius: 4px; background: #f9f9f9; }
+
+        .actions-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.85); padding: 15px; text-align: center; backdrop-filter: blur(10px); z-index: 1000; display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;}
+        .btn-action { padding: 12px 20px; font-size: 0.95em; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;}
+        .btn-save { background: var(--brand-primary); color: #002e33; }
+        .btn-wa { background: #25D366; color: white; }
+        .btn-mail { background: #EA4335; color: white; }
+
+        @media print {
+            body { background: #fff; padding: 0; }
+            #login-overlay, .actions-bar, .header, .comparison-grid, .accordion, .panel, h2, #link-generated-screen, .input-guest-container { display: none !important; }
+            .container { padding: 0; max-width: 100%; box-shadow: none; border:none; background: transparent; }
+            .main-content-wrapper { filter: blur(0); opacity: 1; }
+            #guest-contract-view { display: block !important; margin-top: 0; }
+            .contract-paper { padding: 0; box-shadow: none; border: none; margin-bottom: 0; }
+            h3 { page-break-after: avoid; }
+            .double-signature-block { page-break-inside: avoid; }
+        }
+    </style>
 </head>
 <body>
-    <svg>
-        <polyline points="12 6 12 16 16 14" />
-        <polyline points="12 6 12 16 16 14" />
-    </svg>
-    <img src="alt='Firma Matteo Masella - File non disponibile'" alt="Firma Matteo Masella - File non disponibile" />
+
+<div id="login-overlay">
+    <div class="login-box">
+        <h3 style="color:#fff;" id="login-title">Area Riservata Ospiti</h3>
+        <p style="color:var(--brand-primary); font-size: 0.9em; margin-top:-10px;" id="login-subtitle">Inserisci il codice di accesso</p>
+        <input type="password" id="access-code" class="login-input" placeholder="Codice" maxlength="6">
+        <button onclick="checkCode()" class="login-btn">ACCEDI / ENTER</button>
+        <div id="error-msg" style="color:var(--brand-accent); margin-top:10px;"></div>
+    </div>
+</div>
+
+<div class="main-content-wrapper" id="main-content" style="display:none;">
+    
+    <div class="container" id="dashboard-container">
+        <div class="header">
+            <h1 id="mainTitle">Welcome & Policy 2026</h1>
+        </div>
+
+        <h2 style="color:var(--brand-primary); text-align:center;">PANORAMICA SUI QUATTRO MODELLI DI SOGGIORNO</h2>
+        
+        <div class="comparison-grid">
+            <div class="comp-card">
+                <h3>Standard Stay</h3>
+                <span class="badge-info">Da 1 a 13 Notti</span>
+                <ul>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                        <div><strong>Sconto Tariffa ADR:</strong> Nessuno.</div>
+                    </li>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                        <div><strong>Servizi di Pulizia:</strong> €45,00 (Pulizia finale obbligatoria). Pulizie intermedie opzionali.</div>
+                    </li>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                        <div><strong>Energia e Utenze:</strong> Incluse nella tariffa base. Nessun limite di franchigia applicato.</div>
+                    </li>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                        <div><strong>Surcharge Rischio Energia:</strong> Maggiorazione automatica del +4% (Estate) o +5% (Inverno) calcolata sul costo soggiorno (Cap max €80).</div>
+                    </li>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2" ry="2"></rect><circle cx="12" cy="12" r="2"></circle><path d="M6 12h.01M18 12h.01"></path></svg>
+                        <div><strong>Tassa di Soggiorno:</strong> €9,50 a persona/notte (applicata per un massimo di 14 notti).</div>
+                    </li>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        <div><strong>Deposito e Danni:</strong> €350 su carta o acquisto Polizza Danni.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="comp-card">
+                <h3>Long Stay</h3>
+                <span class="badge-info">Da 14 a 29 Notti</span>
+                <ul>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                        <div><strong>Sconto Tariffa ADR:</strong> Nessuno.</div>
+                    </li>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                        <div><strong>Servizi di Pulizia:</strong> €80,00 (Pulizia finale). Pulizia intermedia obbligatoria ogni 14 notti (€40/cad).</div>
+                    </li>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                        <div><strong>Energia e Utenze:</strong> Incluse nella tariffa base.</div>
+                    </li>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                        <div><strong>Surcharge Rischio Energia:</strong> Maggiorazione automatica del +4% (Estate) o +5% (Inverno) calcolata sul costo soggiorno (Cap max €80).</div>
+                    </li>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2" ry="2"></rect><circle cx="12" cy="12" r="2"></circle><path d="M6 12h.01M18 12h.01"></path></svg>
+                        <div><strong>Tassa di Soggiorno:</strong> €9,50 a persona/notte (applicata per un massimo di 14 notti).</div>
+                    </li>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        <div><strong>Deposito e Danni:</strong> €350 su carta o acquisto Polizza Danni.</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="comp-card">
+                <h3>Extra Long Stay</h3>
+                <span class="badge-info">Da 30 a 60 Notti</span>
+                <ul>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                        <div><strong>Sconto Tariffa Base:</strong> Fino al -15% sulla tariffa netta agevolata.</div>
+                    </li>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                        <div><strong>Servizi di Pulizia:</strong> €80,00 a fine soggiorno + Pulizia intermedia obbligatoria quindicinale (ogni 14 notti).</div>
+                    </li>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 16 14"></polyline></svg>
+                        <div><strong>Forfait Utenze:</strong> €90,00 fissi per i primi 30 giorni. Dal 31° giorno +€3,00/giorno fino a max ulteriori €80,00/mese.</div>
+                    </li>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                        <div><strong>Policy "Fair Use":</strong> Attiva sui consumi. Eventuali eccedenze addebitate a consumo.</div>
+                    </li>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        <div><strong>Deposito e Danni (Obbligatori):</strong> Blocco di €500 su carta E acquisto obbligatorio Polizza Danni a carico dell'ospite.</div>
+                    </li>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        <div><strong>Registrazione Contratto:</strong> Obbligatoria. Imposta di Registro 2% + Bolli €16,00 interamente a carico dell'ospite.</div>
+                    </li>
+                    <li><svg class="icon-bullet" viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line></svg>
+                        <div><strong>Benefit a Scelta Esclusiva:</strong> Welcome Pack Premium (incluso) + a scelta: Sconto del 50% sul Parcheggio OPPURE Costi Registrazione Contratto omaggiati.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="comp-card featured">
+                <h3>Smart Resident</h3>
+                <span class="badge-gold">Da 61 a 90 Notti</span>
+                <p style="color:var(--brand-gold); font-weight:700; font-size:0.8em; margin:10px 0;">I VANTAGGI PER CHI RESTA DI PIÙ:</p>
+                <ul>
+                    <li><svg class="icon-bullet icon-gold" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                        <div><strong>Sconto Tariffa Base:</strong> Fino al -15% sulla tariffa netta agevolata.</div>
+                    </li>
+                    <li><svg class="icon-bullet icon-gold" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                        <div><strong>Servizi di Pulizia:</strong> Pulizia finale €80,00. Pulizie intermedie quindicinali previste.</div>
+                    </li>
+                    <li><svg class="icon-bullet icon-gold" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 16 14"></polyline></svg>
+                        <div><strong>Forfait Utenze:</strong> €90,00 fissi per i primi 30 giorni. Dal 31° giorno +€3,00/giorno fino a max ulteriori €80,00/mese.</div>
+                    </li>
+                    <li><svg class="icon-bullet icon-gold" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                        <div><strong>Policy "Fair Use":</strong> Attiva sui consumi. Eccedenze addebitate a consumo.</div>
+                    </li>
+                    <li><svg class="icon-bullet icon-gold" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        <div><strong>Deposito e Danni:</strong> Blocco di €500 su carta. La Polizza Danni obbligatoria è pagata e assorbita dall'Host.</div>
+                    </li>
+                    <li><svg class="icon-bullet icon-gold" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        <div><strong>Registrazione Contratto:</strong> Obbligatoria ma GRATUITA (Costi e bolli interamente a carico del Locatore).</div>
+                    </li>
+                    <li><svg class="icon-bullet icon-gold" viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line></svg>
+                        <div><strong>Benefit a Scelta Esclusiva:</strong> Welcome Pack SETUP Drink (incluso) + a scelta: Parcheggio 100% GRATUITO OPPURE Costi Registrazione Contratto omaggiati.</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="display:flex; justify-content:center; align-items:center; gap:15px; margin:30px 0 15px 0; color:var(--brand-primary);">
+            <svg class="svg-engraved" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+            <span>Dettagli legali integrali e Documentazione</span>
+            <svg class="svg-engraved" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+        </div>
+
+        <button class="accordion">
+            <span><svg class="svg-inline" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Termini e Condizioni Contrattuali (Estesi)</span><span>+</span>
+        </button>
+        <div class="panel">
+            <p style="margin-top: 15px;">Per la massima trasparenza, ecco un riepilogo dettagliato dei costi, delle regole e delle politiche che regolano la tua prenotazione e il tuo soggiorno:</p>
+            
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+                <div>
+                    <span class="policy-title">1. Costi e Pagamenti</span>
+                    <p class="policy-text"><strong>Tassa di Soggiorno:</strong> Secondo le normative del Comune di Milano, è prevista una tassa di €9,50 a persona per notte, applicata per un massimo di 14 giorni. Il pagamento è richiesto prima dell'arrivo.</p>
+                    <p class="policy-text" style="margin-top:5px;"><strong>Costo Fisso di Servizio e Gestione:</strong> €15,00 per soggiorno.</p>
+                    <p class="policy-text" style="margin-top:5px;"><strong>Supplementi Stagionali (Surcharge):</strong> Costo aggiuntivo percentuale obbligatorio, calcolato sul costo del pernotto (escluse tasse e costi accessori). Estate (Elettricità): 16 Maggio – 14 Ottobre. Valore: 4% (cap massimo €80 per l'intero soggiorno). Inverno (Riscaldamento): 15 Ottobre – 15 Maggio. Valore: 5% (cap massimo €80 per l'intero soggiorno) per coprire gli elevati costi energetici.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <div>
+                    <span class="policy-title">2. Deposito Cauzionale e Protezione Danni</span>
+                    <p class="policy-text">Al momento del check-in online (tramite checkin.com) è obbligatorio scegliere una delle seguenti opzioni:</p>
+                    <p class="policy-text" style="margin-top:5px;"><strong>Opzione A: Deposito Cauzionale Rimborsabile.</strong> Pagamento di €350,00 (per soggiorni sotto i 30 giorni) o €500,00 (per soggiorni di 30 o più giorni), rimborsato a fine soggiorno dopo la verifica dell'immobile. Include una commissione di gestione non rimborsabile di €4,80.</p>
+                    <p class="policy-text" style="margin-top:5px;"><strong>Opzione B: Polizza Protezione Danni.</strong> Acquisto di un'assicurazione a copertura dei danni. Costi e termini definiti dal fornitore in fase di selezione.</p>
+                    <p class="policy-text" style="margin-top:5px;"><strong>Nota Bene:</strong> Per le prenotazioni Extra Long e Smart Resident (superiori a 30 giorni) il deposito cauzionale su carta di credito ammonta a €500,00 ed è inoltre obbligatorio il pagamento dell'assicurazione danni con il massimale più alto. Tale polizza è a carico dell'ospite per i soggiorni Extra Long (30-60 giorni), mentre viene assorbita come costo dall'Host per i soggiorni Smart Resident (oltre 60 giorni).</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                <div>
+                    <span class="policy-title">3. Servizi di Pulizia per Soggiorni Prolungati</span>
+                    <p class="policy-text"><strong>Pulizia di Fine Soggiorno:</strong> €45,00 per soggiorni Standard (1-13 notti) ed €80,00 per soggiorni lunghi (Mid, Long, Extra Long).</p>
+                    <p class="policy-text" style="margin-top:5px;"><strong>Pulizia Intermedia Obbligatoria:</strong> Per permanenze superiori a 13 notti è obbligatorio un intervento di pulizia a cadenza settimanale (ogni 14 notti) al costo di €40,00 ad intervento, salvo inclusioni specifiche nella promozione.</p>
+                    <p class="policy-text" style="margin-top:5px;"><strong>Penalità:</strong> In caso di accesso negato all'operatore per responsabilità del Conduttore, sarà addebitata una fee di €20,00 per no-show.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <div>
+                    <span class="policy-title">4. Regole della Casa e Penali</span>
+                    <p class="policy-text"><strong>Ospiti Registrati:</strong> Solo gli ospiti registrati sono ammessi. Violazione = allontanamento immediato.<br>
+                    <strong>Vietato Fumare:</strong> Penale di €200,00 più costi di rimozione odori.<br>
+                    <strong>Animali non ammessi:</strong> Penale per pulizia aggiuntiva e danni.<br>
+                    <strong>Chiavi:</strong> Smarrimento = costo cambio serratura + set chiavi + penale €150,00.<br>
+                    <strong>Rumore e Feste:</strong> Feste vietate. Ore di silenzio 21:00 - 07:00.<br>
+                    <strong>WC Sanitrit:</strong> Gettare solo carta igienica. Danni da uso improprio saranno addebitati.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                <div>
+                    <span class="policy-title">5. Politica Energetica e Surcharges</span>
+                    <p class="policy-text">L'aria condizionata non deve scendere sotto i 20°C e le finestre devono restare chiuse. Vietato l'uso 24/7. Per garantire sostenibilità e tariffe eque, applichiamo due modelli di gestione energetica:</p>
+                    <p class="policy-text" style="margin-top:5px;"><strong>Soggiorni Standard e Long (Inferiori a 30 Notti):</strong> Nessun limite "Fair Use" sui consumi. Viene applicata una maggiorazione fissa per il rischio energetico del +4% (Estate) o +5% (Inverno) sul costo del pernottamento (Cap massimo €80 per l'intero soggiorno).</p>
+                    <p class="policy-text" style="margin-top:5px;"><strong>Soggiorni Mensili, Extra Long e Smart Resident (30+ Notti):</strong> Si applica un Forfait Utenze fisso di €90,00 per ogni mese intero (multipli di 30 giorni) e di €3,00 per ogni giorno in eccedenza (fino a un massimo di altri €80,00/mese per i giorni eccedenti), associato a una rigorosa policy di "Fair Use". I consumi sono monitorati tramite sistemi smart. Qualora le soglie mensili vengano superate, l'ospite pagherà le eccedenze a consumo (Elettricità: 0,80 €/kWh; Risc. Centralizzato: 0,35 €/scatto; Risc. Autonomo Gas: 1,50 €/Smc).</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 8 12 12 16"></polyline><line x1="16" y1="12" x2="8" y2="12"></line></svg>
+                <div>
+                    <span class="policy-title">6. Recesso Anticipato (Soggiorni di oltre 30 notti)</span>
+                    <p class="policy-text">Chiunque sottoscriva un contratto lungo, qualora decida di lasciare l'appartamento anticipatamente, dovrà attenersi alla seguente procedura obbligatoria: la disdetta va comunicata il primo mercoledì utile e il rilascio avverrà decorse 10 giornate da tale data. Inoltre, a titolo compensativo, il Conduttore dovrà pagare una <strong>penale forfettaria pari a 1 settimana di soggiorno</strong>.</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="accordion">
+            <span><svg class="svg-inline" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg> Cleaning Policy Completa (Termini e Condizioni)</span><span>+</span>
+        </button>
+        <div class="panel">
+            <div class="policy-box" style="margin-top: 15px;">
+                <svg class="policy-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <div>
+                    <span class="policy-title">Introduzione</span>
+                    <p class="policy-text">Il presente documento raccoglie la versione integrativa dei Termini e Condizioni che regolano le prenotazioni, i soggiorni e la gestione dei consumi energetici per gli immobili gestiti da 2EMME RE&CONSULTING (di seguito "Locatore").</p>
+                </div>
+            </div>
+            
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                <div>
+                    <span class="policy-title">1) Definizioni</span>
+                    <p class="policy-text">
+                    <strong>"Conduttore":</strong> la persona fisica o giuridica che prenota e occupa l'unità immobiliare.<br>
+                    <strong>"Unità":</strong> l'alloggio oggetto della prenotazione.<br>
+                    <strong>"Pulizia Finale":</strong> intervento di sanificazione e riassetto finale al check‑out, previsto per tutte le prenotazioni.<br>
+                    <strong>"Pulizia Intermedia Obbligatoria":</strong> intervento programmato durante il soggiorno per riassetto, cambio biancheria e sanificazione parziale.<br>
+                    <strong>"Pulizia Extra":</strong> intervento non programmato dovuto a violazioni (fumo, sporco eccessivo, presenza di animali non dichiarati), addebitabile al Conduttore.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                <div>
+                    <span class="policy-title">2) Panoramica Cleaning Policy — Principi Base</span>
+                    <p class="policy-text">
+                    a) Final cleaning obbligatoria per tutte le prenotazioni; il relativo importo è identificato nella conferma di prenotazione (valori standard: €45 per Standard; €80 per Long/Extra Long).<br>
+                    b) Le pulizie intermedie sono obbligatorie per tutte le permanenze superiori a 13 notti. La frequenza minima è settimanale (ogni 7 notti) salvo diversa indicazione contrattuale.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 16 14"></polyline></svg>
+                <div>
+                    <span class="policy-title">3) Regole Operative</span>
+                    <p class="policy-text"><strong>A — Regole per fascia di soggiorno</strong><br>
+                    <strong>Standard Stay (1–13 notti):</strong> Pulizia Finale obbligatoria. Pulizie intermedie: opzionali, su richiesta.<br>
+                    <strong>Mid‑Stay (14–29 notti):</strong> Pulizia intermedia obbligatoria: almeno 1 pulizia ogni 14 notti. Pulizia Finale a fine soggiorno (€80).<br>
+                    <strong>Long / Extra Long Stay (30–89 notti):</strong> Pulizia intermedia obbligatoria: settimanale (ogni 14 notti) e cambio biancheria incluso.<br>
+                    <strong>Smart Resident (60–90 gg):</strong> Pulizia intermedia settimanale inclusa nel canone.</p>
+                    <p class="policy-text" style="margin-top:10px;"><strong>B — Addebiti e modalità di pagamento</strong><br>
+                    Tariffe raccomandate: Pulizia Finale Standard: €45; Pulizia Finale Long: €80; Pulizia Intermedia: €40 per intervento; Pulizia Extra: minimo €70.</p>
+                </div>
+            </div>
+            
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <div>
+                    <span class="policy-title">4) Pulizie per Violazioni e Danni</span>
+                    <p class="policy-text">
+                    Fumo in appartamento → sanificazione profonda + deodorazione: €200 (importo minimo)<br>
+                    Animali non dichiarati → €150–€350 a seconda della gravità<br>
+                    Rimozione rifiuti ingombranti → da €80 in su
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <button class="accordion">
+            <span><svg class="svg-inline" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Regole della Casa e Modello di Ospitalità (D&I)</span><span>+</span>
+        </button>
+        <div class="panel">
+            <div class="policy-box" style="margin-top: 15px;">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                <div>
+                    <span class="policy-title">Scopo e Visione (D&I) e Design Responsabile</span>
+                    <p class="policy-text">Accoglienza responsabile, sostenibile e inclusiva. Chi alloggia nelle nostre strutture condivide la politica della Non Violenza e la filosofia D&I (Diversity & Inclusion), estesa anche a un Design Responsabile degli spazi. Il nostro principio cardine è che "la natura dell'ospitalità è accogliere e servire gli altri senza distinzioni". Vige il divieto assoluto verso qualsiasi forma di discriminazione.</p>
+                </div>
+            </div>
+
+            <h3 style="color:var(--brand-gold); margin: 20px 0 10px 0; font-size:1.2em;">Regole Principali (Essenziali)</h3>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                <div>
+                    <p class="policy-text"><strong>Solo ospiti registrati:</strong> Possono alloggiare solo le persone la cui identità è stata registrata al momento della prenotazione. Presenze non autorizzate comportano allontanamento immediato e addebito.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+                <div>
+                    <p class="policy-text"><strong>Vietato fumare:</strong> Non è permesso fumare all’interno dell’appartamento né nelle aree comuni. Penale: €200 + costo effettivo per rimozione odori e sanificazione.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+                <div>
+                    <p class="policy-text"><strong>Animali non ammessi:</strong> Gli animali non sono consentiti. In caso di violazione si applicherà addebito per pulizia aggiuntiva e danni.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path><line x1="2" y1="2" x2="22" y2="22"></line></svg>
+                <div>
+                    <p class="policy-text"><strong>Silenzio notturno:</strong> Rispetto della quiete dalle 21:00 alle 07:00. Niente feste o eventi: Vietati eventi e riunioni numerose. Violazioni comportano allontanamento e addebiti per danni.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M12 2.69l5.66 4.2c.2.15.34.39.34.65v11.5c0 .55-.45 1-1 1h-10a1 1 0 0 1-1-1v-11.5c0-.26.14-.5.34-.65L12 2.69z"></path></svg>
+                <div>
+                    <p class="policy-text"><strong>Uso del WC SANITRIT:</strong> Nelle unità dotate di trituratore (The NoLo Heritage) gettare nel WC solo carta igienica. Costi di intervento per intasamenti a carico dell’ospite.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <div>
+                    <p class="policy-text"><strong>Check-out e Chiavi:</strong> Obbligatorio entro le 11:00, salvo late check-out concordato. Chiavi smarrite: Sostituzione serratura + set chiavi + penale: €150.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <div>
+                    <span class="policy-title">ART. 6 – POLITICA GREEN, SUPPLEMENTI E FAIR USE</span>
+                    <p class="policy-text">La nostra struttura supporta il City Green Deal. L'aria condizionata non deve scendere sotto i 20°C e le finestre devono restare chiuse. È vietato l'uso 24/7. Il corretto utilizzo degli impianti è monitorato attivamente tramite i nostri sistemi smart.</p>
+                    <p class="policy-text" style="margin-top:10px;"><strong>A) Supplementi per soggiorni SOTTO i 30 giorni:</strong><br>
+                    Estate (16 Maggio – 14 Ottobre): Supplemento Elettricità del +4% (cap massimo €80 per il soggiorno).<br>
+                    Inverno (15 Ottobre – 15 Maggio): Supplemento Riscaldamento del +5% (cap massimo €80 per il soggiorno).</p>
+                    
+                    <p class="policy-text" style="margin-top:10px;"><strong>B) Policy "Fair Use" sui consumi (soggiorni DAI 30 AI 90 giorni):</strong><br>
+                    Forfait utenze: €90,00 per ogni mese intero (multipli di 30 giorni).<br>
+                    Giorni in eccedenza: €3,00 per ogni giorno oltre i multipli di 30 giorni (Massimo €80,00/mese per i giorni eccedenti). Esempio: 65 giorni = 90€ + 90€ + 15€ = €195.</p>
+                    
+                    <p class="policy-text" style="margin-top:10px;"><strong>Listino penali "Overuse" (extracosti a consumo per superamento soglie)</strong><br>
+                    Elettricità Extra (tutti gli alloggi): €0,80 / kWh<br>
+                    Riscaldamento centralizzato Extra (Nest, Suite, Studio): €0,35 / scatto<br>
+                    Riscaldamento autonomo Gas Extra (Heritage): €1,50 / Smc</p>
+                    
+                    <p class="policy-text" style="margin-top:10px;"><strong>Soglie contrattuali per stagionalità e unità:</strong><br>
+                    <strong>ESTATE (16 maggio – 14 ottobre) — elettricità (A/C inclusa)</strong><br>
+                    - The NoLo Nest / Suite: 8 kWh / gg (240 kWh / mese)<br>
+                    - The NoLo Studio: 6 kWh / gg (180 kWh / mese)<br>
+                    - The NoLo Heritage: 3 kWh / gg (90 kWh / mese)<br><br>
+                    <strong>INVERNO (15 ottobre – 15 maggio) — riscaldamento + elettricità (senza A/C)</strong><br>
+                    - The NoLo Nest: 25 scatti/gg (750/mese) + 6 kWh/gg<br>
+                    - The NoLo Suite: 20 scatti/gg (600/mese) + 6 kWh/gg<br>
+                    - The NoLo Studio: 14 scatti/gg (420/mese) + 5 kWh/gg<br>
+                    - The NoLo Heritage: 4 Smc/gg (120/mese) + 3 kWh/gg</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                <div>
+                    <span class="policy-title">Linee Guida Pratiche — Comportamento Ecologico</span>
+                    <p class="policy-text">
+                    Aria condizionata: impostare ≥ 20 °C; non lasciare AC acceso con finestre aperte. L’uso continuo (24/7) è vietato.<br>
+                    Docce: limitare la durata; i boiler hanno capacità limitata.<br>
+                    Luci e apparecchi: spegnere quando non in uso.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                <div>
+                    <span class="policy-title">Raccolta differenziata — Istruzioni rapide (Milano)</span>
+                    <p class="policy-text">
+                    Carta e cartone (Bianco): piegare e schiacciare scatole; riporre asciutto.<br>
+                    Plastica, lattine, metalli (Giallo): vuoti e sciacquati.<br>
+                    Vetro (Verde): bottiglie e vasetti senza tappi.<br>
+                    Umido/organico (Marrone): rifiuti decomp. sacchi compostabili.<br>
+                    Secco non riciclabile (Neutro): ciò che non rientra nelle categorie sopra.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="accordion"><span><svg class="svg-inline" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Informativa Privacy & GDPR (Allegato A)</span><span>+</span></button>
+        <div class="panel">
+            <h3 style="margin-top: 15px;">ALLEGATO A – INFORMATIVA PRIVACY & GDPR</h3>
+            <p style="margin-bottom: 20px;">Informativa estesa ai sensi del Regolamento (UE) 2016/679 (GDPR)</p>
+            
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <div>
+                    <span class="policy-title">1. Titolare del trattamento</span>
+                    <p class="policy-text">Il Titolare del trattamento è 2EMME RE&CONSULTING di Matteo Masella, con sede legale in Via Pietro Colletta 70, 20137 Milano (P.IVA IT13411850962). Per qualsiasi comunicazione relativa al trattamento dei dati personali è possibile contattare il Titolare via e-mail: matteo.masella@duemmeconsulting.it o per posta a: Via Pietro Colletta 70, 20137 Milano.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <div>
+                    <span class="policy-title">2. Responsabile della protezione dei dati (DPO)</span>
+                    <p class="policy-text">Al momento non è stato nominato un Responsabile della Protezione dei Dati (DPO). Per richieste specifiche riguardanti la protezione dei dati contattare il Titolare ai recapiti sopra indicati.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <div>
+                    <span class="policy-title">3. Finalità del trattamento e basi giuridiche</span>
+                    <p class="policy-text">I dati personali raccolti sono trattati per le seguenti finalità, con la corrispondente base giuridica:<br>
+                    - Esecuzione del contratto di locazione turistica (es. gestione prenotazione, check-in/out, emissione ricevute/fatture, gestione cauzioni, gestione richieste e servizi accessori). Base giuridica: esecuzione di un contratto (art. 6(1)(b) GDPR).<br>
+                    - Adempimenti di pubblica sicurezza: trasmissione delle generalità degli ospiti alla Autorità di Pubblica Sicurezza tramite il sistema “Alloggiati Web” ai sensi dell’art. 109 del T.U.L.P.S. e successive disposizioni operative. Base giuridica: obbligo legale (art. 6(1)(c) GDPR).<br>
+                    - Obblighi fiscali e contabili: conservazione ed esibizione di documenti contabili, emissione di fatture e adempimenti tributari. Base giuridica: obbligo legale (art. 6(1)(c) GDPR).<br>
+                    - Tutela dei diritti e della sicurezza dell’immobile: rilevamento e gestione di danni, gestione di pratiche assicurative e contenziosi. Base giuridica: esecuzione del contratto e legittimo interesse del Titolare (art. 6(1)(b) e 6(1)(f) GDPR).<br>
+                    - Comunicazioni commerciali e marketing diretto (newsletter, promozioni): solo previo consenso espresso e separato dell’interessato. Base giuridica: consenso (art. 6(1)(a) GDPR).</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                <div>
+                    <span class="policy-title">4. Tipologie di dati trattati</span>
+                    <p class="policy-text">A seconda della finalità, potranno essere trattati, tra gli altri:<br>
+                    - dati identificativi (nome, cognome, data e luogo di nascita);<br>
+                    - dati relativi al documento di identità (tipo, numero, data e autorità di rilascio) necessari per Alloggiati Web e verifica identità;<br>
+                    - codice fiscale;<br>
+                    - dati di contatto (indirizzo postale, indirizzo e-mail, numero di telefono);<br>
+                    - dati contrattuali e di prenotazione (date di arrivo/partenza, codice prenotazione, numero di occupanti);<br>
+                    - dati di pagamento e contabili (coordinate per bonifico, ricevute, estremi transazioni) in forma non sensibile, salvo diversa necessità;<br>
+                    - eventuali dati forniti volontariamente per esigenze particolari (allergie, richieste speciali);<br>
+                    - registrazioni fotografiche o documentali relative a eventuali danni (solo se rese necessarie per l’attività di documentazione e contestazione).</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <div>
+                    <span class="policy-title">5. Modalità di trattamento</span>
+                    <p class="policy-text">I dati sono trattati con strumenti informatici e/o cartacei, mediante procedure organizzative e logiche strettamente correlate alle finalità sopra indicate. Sono adottate misure tecniche e organizzative idonee a garantire la riservatezza, l’integrità, la disponibilità e la resilienza dei sistemi e dei servizi, tra cui controllo degli accessi, gestione degli account con privilegi limitati, backup, aggiornamenti, utilizzo di connessioni cifrate per le comunicazioni e policy interne di sicurezza.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                <div>
+                    <span class="policy-title">6. Destinatari dei dati e categorie di soggetti</span>
+                    <p class="policy-text">I dati potranno essere comunicati a:<br>
+                    - Autorità di pubblica sicurezza (tramite Alloggiati Web) e a soggetti pubblici ove richiesto dalla legge;<br>
+                    - Fornitori di servizi necessari all’esecuzione del contratto (es. piattaforme di prenotazione / OTA, sistemi di payment processing, servizi di pulizia e manutenzione) in qualità di responsabili del trattamento;<br>
+                    - Consulenti professionali (commercialisti, avvocati) e istituti bancari per esigenze di gestione contabile e fiscale;<br>
+                    - Società terze che svolgono attività di hosting, conservazione documentale o supporto tecnologico su incarico del Titolare;<br>
+                    - Autorità giudiziarie e amministrative in caso di richieste legittime.<br>
+                    Tutti i soggetti esterni ricevono i dati in qualità di Responsabili del trattamento e sono vincolati da idonei obblighi contrattuali e di riservatezza.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                <div>
+                    <span class="policy-title">7. Trasferimenti internazionali di dati</span>
+                    <p class="policy-text">Qualora sia necessario trasferire dati verso Paesi terzi (extra-UE), il Titolare garantirà che il trasferimento avvenga solo verso Paesi che assicurano un livello di protezione adeguato o mediante garanzie adeguate (decisione di adeguatezza, clausole contrattuali standard approvate dalla Commissione Europea, regole aziendali vincolanti o altre misure conformi al GDPR). Su richiesta sarà fornita indicazione delle garanzie adottate.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <div>
+                    <span class="policy-title">8. Periodi di conservazione</span>
+                    <p class="policy-text">I dati saranno conservati per il tempo strettamente necessario al perseguimento delle finalità per cui sono stati raccolti e nei limiti imposti dalla normativa applicabile:<br>
+                    - documenti e dati fiscali e contabili: 10 anni (es. obblighi fiscali e di contabilità);<br>
+                    - dati e documentazione relativi alla comunicazione Alloggiati Web e verifica identità: mantenuti in archivio secondo le prassi amministrative e comunque per un periodo non inferiore a 5 anni come buona prassi operativa per finalità probatorie in caso di controlli;<br>
+                    - dati relativi a contestazioni danni e causali: per il periodo necessario alla definizione della pratica e per i termini di prescrizione legale;<br>
+                    - dati trattati per finalità di marketing: fino alla revoca del consenso.<br>
+                    Al termine dei periodi di conservazione i dati saranno cancellati o resi anonimi in modo irreversibile, salvo obblighi di legge che impongano conservazioni più lunghe.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                <div>
+                    <span class="policy-title">9. Diritti degli interessati</span>
+                    <p class="policy-text">L’interessato può esercitare i diritti previsti dagli artt. 15-22 del GDPR:<br>
+                    - diritto di accesso ai propri dati personali;<br>
+                    - diritto di rettifica dei dati inesatti;<br>
+                    - diritto alla cancellazione (“diritto all’oblio”) nei casi previsti;<br>
+                    - diritto alla limitazione del trattamento;<br>
+                    - diritto alla portabilità dei dati (quando il trattamento è basato su consenso o contratto e i dati sono trattati con mezzi automatizzati);<br>
+                    - diritto di opposizione al trattamento per motivi legittimi;<br>
+                    - diritto di proporre reclamo all’Autorità di controllo (Garante per la protezione dei dati personali — www.garanteprivacy.it).<br>
+                    Le richieste devono essere indirizzate al Titolare all’indirizzo di posta elettronica matteo.masella@duemmeconsulting.it o via posta a: Via Pietro Colletta 70, 20137 Milano. Le richieste saranno gestite nei termini e nei modi previsti dalla normativa vigente (di norma entro un mese salvo casi particolari).</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <div>
+                    <span class="policy-title">10. Conseguenze del mancato conferimento dei dati</span>
+                    <p class="policy-text">Il conferimento dei dati necessari per l’esecuzione del contratto e per l’adempimento degli obblighi di legge (es. invio Alloggiati Web) è obbligatorio. Il mancato conferimento può rendere impossibile la stipula o l’esecuzione del contratto (ad esempio impossibilità di effettuare il check-in o di ospitare l’interessato). Per altri dati facoltativi (es. dati per marketing) il conferimento è su base volontaria e il mancato conferimento non pregiudica l’erogazione del servizio principale.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <div>
+                    <span class="policy-title">11. Misure di sicurezza</span>
+                    <p class="policy-text">Il Titolare applica misure tecniche e organizzative adeguate alla protezione dei dati personali, tra cui:<br>
+                    - utilizzo di protocolli cifrati (HTTPS/TLS) per le comunicazioni on-line;<br>
+                    - controllo degli accessi e gestione degli account con privilegi limitati;<br>
+                    - backup regolari e policy di retention;<br>
+                    - formazione e limitazione degli accessi al personale incaricato;<br>
+                    - obblighi contrattuali di riservatezza per i responsabili esterni.<br>
+                    Tali misure sono riesaminate periodicamente in funzione dell’evoluzione tecnologica e degli obblighi normativi.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+                <div>
+                    <span class="policy-title">12. Profilazione e decisioni automatizzate</span>
+                    <p class="policy-text">Il Titolare non effettua processi decisionali basati esclusivamente su trattamenti automatizzati che producano effetti giuridici significativi per l’interessato, né attività di profilazione su larga scala senza consenso esplicito. Qualora in futuro si prevedano tali trattamenti, sarà fornita adeguata informativa e, ove richiesto, sarà acquisito il consenso.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                <div>
+                    <span class="policy-title">13. Aggiornamenti dell’informativa</span>
+                    <p class="policy-text">L’informativa può essere aggiornata per adeguarsi a modifiche normative o organizzative. La versione pubblicata sul sito web del Titolare contiene la data dell’ultimo aggiornamento: Gennaio 2026. Si raccomanda di consultare periodicamente la versione online.</p>
+                </div>
+            </div>
+
+            <div class="policy-box">
+                <svg class="policy-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <div>
+                    <span class="policy-title">14. Ulteriori informazioni e contatti</span>
+                    <p class="policy-text">Per esercitare i diritti, per richiedere informazioni aggiuntive o per presentare reclamo: e-mail: matteo.masella@duemmeconsulting.it indirizzo postale: Via Pietro Colletta 70, 20137 Milano. Per reclami indipendenti è possibile rivolgersi al Garante per la protezione dei dati personali: www.garanteprivacy.it.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="admin-section-wrapper">
+            <button id="admin-toggle-btn" class="accordion" style="background: rgba(255, 215, 0, 0.1); border: 1px dashed var(--brand-gold); color: var(--brand-gold); margin-top: 40px;" onclick="checkAdminAccess()">
+                <span>
+                    <span id="admin-lock-icon"><svg class="svg-engraved" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span> Area Gestore: Generatore Contratti
+                </span><span>+</span>
+            </button>
+            <div class="panel" id="admin-panel" style="padding: 20px 30px;">
+                <div id="admin-step-1" class="admin-form">
+                    <h3 style="color:var(--brand-gold); margin-top:0;">Step 1: Dati di Base</h3>
+                    <div class="form-row">
+                        <div style="flex:2;"><label>Alloggio:</label>
+                            <select id="apt-select" class="form-input">
+                                <option value="heritage">The NoLo Heritage (CAV - Termopili 29)</option>
+                                <option value="studio">The NoLo Studio (CAV - Chavez 1)</option>
+                                <option value="suite">The NoLo Suite (CAV - Bassano 32)</option>
+                                <option value="nest">The NoLo Nest (CAV - Bassano 32)</option>
+                                <option value="masotto">Masotto Terrace View (LT - Masotto 4)</option>
+                            </select>
+                        </div>
+                        <div><label>Rif. Prenotazione:</label><input type="text" id="admin_ref" class="form-input" placeholder="DIR-2601"></div>
+                    </div>
+                    <div class="form-row">
+                        <div><label>Check-in:</label><input type="date" id="admin_checkin" class="form-input" onchange="calculateDates('checkin')"></div>
+                        <div><label>Check-out:</label><input type="date" id="admin_checkout" class="form-input" onchange="calculateDates('checkout')"></div>
+                        <div><label>Notti:</label><input type="number" id="admin_nights" class="form-input" placeholder="0" oninput="calculateDates('nights')"></div>
+                    </div>
+                    <div class="form-row">
+                        <div><label>Ospiti Max:</label><input type="number" id="admin_guests" class="form-input" value="2" onchange="calculateTax()"></div>
+                        <div style="flex:2;"><label>Esenzioni Tassa (Comune di Milano):</label>
+                            <select id="admin_exemption" class="form-input" onchange="calculateTax()">
+                                <option value="0">Nessuna esenzione (Pagamento intero)</option>
+                                <option value="1">Minori di 18 anni</option>
+                                <option value="1">Motivi di salute / Terapie</option>
+                                <option value="1">Accompagnatori di ricoverati</option>
+                                <option value="1">Forze dell'Ordine in servizio</option>
+                                <option value="1">Disabili e Accompagnatori</option>
+                                <option value="1">Studenti Universitari (under 26)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div><label>Prezzo Base Netto (€):</label><input type="number" id="admin_price" class="form-input"></div>
+                    </div>
+                    <button onclick="openCostsModal()" class="generate-btn">CALCOLA E APRI DETTAGLIO COSTI (CRUD)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="link-generated-screen" style="display:none; text-align:center; padding: 50px 20px;">
+    <h2 style="color:var(--brand-gold);">Contratto e Costi Confermati!</h2>
+    <p>Invia questo link univoco al cliente per la compilazione e la firma.</p>
+    <input type="text" readonly id="real_generated_link" style="width:90%; max-width:600px; padding:15px; text-align:center; font-size:1em; border-radius:8px; background:rgba(0,0,0,0.5); color:#fff; border:1px solid var(--brand-primary); margin:20px 0;">
+    <br>
+    <div style="display:flex; gap:10px; justify-content:center;">
+        <button onclick="copyRealLink()" class="generate-btn btn-outline" style="width:auto; padding: 15px 30px; margin:0;"><svg class="svg-engraved" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> COPIA LINK</button>
+        <button onclick="openRealLink()" class="generate-btn btn-blue" style="width:auto; padding: 15px 30px; margin:0;">APRI VISTA OSPITE</button>
+    </div>
+</div>
+
+<div id="costModal" class="modal-overlay">
+    <div class="modal-content">
+        <h3>Dettaglio Costi e Surcharges (Modificabili)</h3>
+        <div class="crud-row"><label>Prezzo Base (€):</label><input type="number" id="crud_base" oninput="recalculateAdminTotal()"></div>
+        <div class="crud-row"><label>Pulizia Finale + Intermedie (€): <br><small id="crud_cleaning_desc" style="color:var(--brand-primary);"></small></label><input type="number" id="crud_cleaning" oninput="recalculateAdminTotal()"></div>
+        <div class="crud-row"><label>Gestione Fissa (€):</label><input type="number" id="crud_fixed" value="15.00" oninput="recalculateAdminTotal()"></div>
+        <div class="crud-row"><label>Utenze/Surcharge (€): <br><small id="crud_utilities_desc" style="color:var(--brand-primary);"></small></label><input type="number" id="crud_utilities" oninput="recalculateAdminTotal()"></div>
+        <div class="crud-row"><label>Tasse Soggiorno (€):</label><input type="number" id="crud_tax" oninput="recalculateAdminTotal()"></div>
+        <div class="crud-row"><label>Cauzione (€): <br><small id="crud_deposit_desc" style="color:var(--brand-accent);"></small></label><input type="number" id="crud_deposit"></div>
+        <div class="crud-total">TOTALE: € <span id="crud_total_val">0.00</span></div>
+        <button class="generate-btn btn-outline" style="margin: 10px 0; padding: 10px;" onclick="simulateDiscountsAdmin()">SIMULA SCONTI (Solo Host)</button>
+        <div class="sim-box" id="discountSimResult">Sconto Mensile (-10%): <strong><span id="sim_monthly"></span> €</strong><br>Sconto Anticipato Totale (-15%): <strong><span id="sim_total"></span> €</strong></div>
+        <div style="display:flex; gap:10px; margin-top: 20px;">
+            <button onclick="document.getElementById('costModal').style.display='none';" class="generate-btn" style="background:#555; color:#fff; flex:1;">ANNULLA</button>
+            <button onclick="confirmAndGenerateRealLink()" class="generate-btn" style="flex:2; margin:0;">CREA LINK</button>
+        </div>
+    </div>
+</div>
+
+<div id="guest-contract-view" class="container">
+    
+    <div class="input-guest-container" style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 20px; border: 1px solid var(--glass-border);">
+        <h3 id="ui_guest_form_title" style="margin-top:0; color:var(--brand-primary);">Compila i tuoi dati per il Contratto</h3>
+        <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
+            <select id="g_nationality" class="form-input" style="flex:1; min-width:200px;" onchange="onNationalityChange()">
+                <option value="it">Nazionalità: Italiana</option><option value="eu">Nazionalità: Unione Europea</option><option value="extra">Nazionalità: Extra-UE</option>
+            </select>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:10px;">
+            <input type="text" id="g_name" class="form-input" placeholder="Nome" style="flex:1; min-width:150px;" oninput="updateGuestText()">
+            <input type="text" id="g_surname" class="form-input" placeholder="Cognome" style="flex:1; min-width:150px;" oninput="updateGuestText()">
+            <input type="date" id="g_dob" class="form-input" style="flex:1; min-width:150px;" oninput="updateGuestText()">
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;">
+            <input type="text" id="g_city_birth" class="form-input" placeholder="Città Nascita" style="flex:1; min-width:150px;" oninput="updateGuestText()">
+            <input type="text" id="g_country_birth" class="form-input" placeholder="Stato Nascita" style="flex:1; min-width:150px;" oninput="updateGuestText()">
+            <input type="text" id="g_email" class="form-input" placeholder="Email" style="flex:1; min-width:200px;" oninput="updateGuestText()">
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;">
+            <input type="text" id="g_residence_address" class="form-input" placeholder="Indirizzo Residenza" style="flex:2; min-width:200px;" oninput="updateGuestText()">
+            <input type="text" id="g_residence_city" class="form-input" placeholder="Città Residenza" style="flex:1; min-width:150px;" oninput="updateGuestText()">
+            <input type="text" id="g_residence_country" class="form-input" placeholder="Stato Residenza" style="flex:1; min-width:150px;" oninput="updateGuestText()">
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;">
+            <select id="g_doc_type" class="form-input" style="flex:1; min-width:150px;" onchange="updateGuestText()"></select>
+            <input type="text" id="g_doc_num" class="form-input" placeholder="N. Documento" style="flex:1; min-width:150px;" oninput="updateGuestText()">
+            <div id="box_cf" style="flex:1; min-width:150px;"><input type="text" id="g_cf" class="form-input" placeholder="Codice Fiscale" oninput="updateGuestText()"></div>
+        </div>
+        
+        <div id="guest_deposit_box" style="margin-top:20px; border-top:1px solid rgba(255,255,255,0.2); padding-top:20px;">
+            <label style="color:var(--brand-gold); font-weight:bold; display:block; margin-bottom:10px;">Scelta Protezione Danni (Art. 5):</label>
+            <select id="g_deposit_choice" class="form-input" onchange="updateGuestText()"></select>
+        </div>
+
+        <div id="guest_benefit_box" style="display:none; margin-top:20px; border-top:1px solid rgba(255,255,255,0.2); padding-top:20px;">
+            <label style="color:var(--brand-gold); font-weight:bold; display:block; margin-bottom:10px;">Benefit Esclusivo Soggiorno Lungo (Non cumulabile):</label>
+            <p style="font-size:0.85em; color:var(--text-muted); margin-top:-5px; margin-bottom:10px;">Il Welcome Pack (Soft & Alcolici) e le Pulizie Intermedie sono già inclusi di default. Scegli UNA delle due opzioni aggiuntive qui sotto (non cumulabili):</p>
+            <select id="g_benefit_choice" class="form-input" onchange="updateGuestText()"></select>
+        </div>
+
+        <div id="guest_payment_plan_box" style="display:none; margin-top:20px; border-top:1px solid rgba(255,255,255,0.2); padding-top:20px;">
+            <label style="color:var(--brand-gold); font-weight:bold; display:block; margin-bottom:10px;">Piano Pagamento:</label>
+            <select id="g_payment_plan" class="form-input" onchange="updateGuestPrice()">
+                <option value="weekly">Settimanale (Prezzo Standard, Nessuno Sconto)</option>
+                <option value="monthly">Mensile Anticipato (Sconto -10%)</option>
+                <option value="full">Saldo Totale Anticipato (Sconto -15%)</option>
+            </select>
+            <p style="font-size:0.85em; color:var(--text-muted); margin-top:5px;">Scegliendo un piano mensile o totale, il sistema ricalcolerà immediatamente il totale pattuito applicando lo sconto al canone.</p>
+        </div>
+    </div>
+
+    <div class="contract-paper" id="printable-contract">
+        <h2 id="doc_title" style="text-align:center; font-size: 1.3em; margin-bottom: 5px;">CONTRATTO DI LOCAZIONE TURISTICA (CAV)</h2>
+        <p style="text-align:center; margin-top: 0; font-size: 0.85em;">(Ai sensi dell’art. 1, comma 2 lett. c), della legge 9 dicembre 1998, n. 431 e della L.R. Lombardia n. 27/2015)</p>
+
+        <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">IL GESTORE / THE MANAGER</h3>
+        <p><strong>2EMME RealEstate & CONSULTING di Matteo Masella</strong><br>Sede Legale: Via Pietro Colletta 70, 20137 Milano (MI)<br>P.IVA: IT13411850962 — C.F.: MSLMTT79E26B354D<br>R.E.A.: MI 2721793 — Codice SDI: JKKZDGR<br>Tel: +39 375 6368333 — Email: matteo.masella@duemmeconsulting.it</p>
+
+        <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">L’OSPITE / THE GUEST</h3>
+        <p><span id="out_name">________</span> <span id="out_surname">________</span>, nato/a il <span id="out_dob">________</span> a <span id="out_city_birth">________</span>.<br>
+        Residenza: <span id="out_residence_address">________</span>, <span id="out_residence_city">________</span> (<span id="out_residence_country">________</span>).<br>
+        Documento: <span id="out_doc_type">________</span> n. <span id="out_doc_num">________</span>. <span id="out_cf_display">C.F.: <span id="out_cf">________</span>.</span><br>
+        Rif. Prenotazione: <strong><span id="out_ref">________</span></strong></p>
+
+        <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">IMMOBILE / PROPERTY</h3>
+        <p><strong>"<span id="out_apt_name"></span>"</strong> (Denom. Min. <span id="out_apt_denom"></span>) — <span id="out_apt_address"></span><br>
+        Dati Catastali: <span id="out_apt_cat"></span><br>
+        <span id="out_apt_suap"></span><br>
+        CIR: <span id="out_apt_cir"></span> — CIN: <span id="out_apt_cin"></span></p>
+
+        <h3 style="background:#fefce8; padding: 10px; text-align: center; border: 1px solid #ccc;">RIEPILOGO COSTI E DURATA SOGGIORNO</h3>
+        <p><strong>Periodo:</strong> Dal <strong><span id="out_checkin"></span></strong> al <strong><span id="out_checkout"></span></strong> (Totale notti: <strong><span id="out_nights"></span></strong>).</p>
+        <table class="contract-summary-table">
+            <tr><th>Costo Puro Soggiorno (Canone):</th><td>€ <span id="out_p_original_base"></span></td></tr>
+            <tr id="row_discount" style="display:none; color: green;"><th>Sconto Applicato sul Canone <span id="out_p_discount_label"></span>:</th><td style="color: green;">- € <span id="out_p_discount_amount"></span></td></tr>
+            <tr><th>Pulizie (Finale + Intermedie incluse):</th><td>€ <span id="out_p_cleaning"></span></td></tr>
+            <tr><th>Costo Fisso Gestione:</th><td>€ <span id="out_p_fisso"></span></td></tr>
+            <tr><th><span id="out_p_utenze_label">Utenze / Surcharge:</span></th><td>€ <span id="out_p_utenze"></span></td></tr>
+            <tr><th>Tassa di Soggiorno:</th><td>€ <span id="out_p_tax"></span></td></tr>
+            <tr id="row_fair_use" style="display:none;"><td colspan="2" style="font-size:0.85em; background:#fff;"><span id="out_p_fairuse"></span></td></tr>
+            <tr><th style="font-size:1.1em; color:#004D54;">TOTALE COMPLESSIVO:</th><td style="font-size:1.1em; font-weight:bold; color:#004D54;">€ <span id="out_p_total"></span></td></tr>
+        </table>
+
+        <div id="contract_benefits_box" style="display:none; border: 2px dashed #4FD1C5; background: #f0fdfa; padding: 15px; margin-bottom: 20px;">
+            <h4 style="margin-top:0; color: #004D54; text-transform: uppercase;">I Vantaggi del tuo Soggiorno Long Term</h4>
+            <p style="margin-bottom:0;" id="out_contract_benefits_text"></p>
+        </div>
+
+        <p><strong>PREAMBOLO: MODELLO DI OSPITALITÀ INCLUSIVO E DESIGN RESPONSABILE</strong><br>Accoglienza responsabile, sostenibile e inclusiva. Chi alloggia nelle nostre strutture non accetta solo un regolamento, ma condivide una visione precisa: la politica della Non Violenza e la filosofia D&I (Diversity & Inclusion), estesa anche a un Design Responsabile degli spazi. Il nostro principio cardine è che "la natura dell'ospitalità è accogliere e servire gli altri senza distinzioni". Vige il divieto assoluto verso qualsiasi forma di discriminazione.</p>
+        
+        <p><strong>ART. 1 – OGGETTO, AMBITO E PIATTAFORME (OTA vs DIRETTE)</strong><br>Il Gestore concede in locazione l'immobile per finalità esclusivamente turistiche (Short Term Rental - Casa Vacanze). La firma del presente accordo implica la piena accettazione del Modello di Ospitalità Inclusivo descritto nel Preambolo. Nota sulle Piattaforme: Le clausole relative a pagamenti e policy di cancellazione variano a seconda del canale di prenotazione. Per le prenotazioni effettuate tramite portali esterni (OTA, es. Airbnb, Booking.com), prevalgono le regole di incasso e cancellazione imposte dalla piattaforma. Per le Prenotazioni Dirette, si applicano inderogabilmente le condizioni stabilite nei successivi Artt. 3-bis e 4.</p>
+
+        <p><strong>ART. 2 – TASSE, COSTI FISSI E SERVIZI INCLUSI</strong><br>Tassa di Soggiorno (Comune di Milano): Secondo le normative vigenti, è prevista una tassa di €9,50 a persona per notte, applicata per un massimo di 14 giorni. Il pagamento è richiesto prima dell'arrivo. Totale dovuto: €<span id="out_p_tax_inline"></span>. Costo Fisso di Servizio e Gestione: €15,00 per soggiorno. Servizi Base Inclusi: Biancheria letto/bagno (dotazione iniziale) e connessione internet Wi-Fi.</p>
+
+        <p><strong>ART. 3 – DURATA DEL CONTRATTO E CHECK-IN/OUT</strong><br>Periodo: Dal <span id="out_checkin_inline"></span> al <span id="out_checkout_inline"></span> (Totale notti: <span id="out_nights_inline"></span>). La durata del presente contratto non può in alcun caso superare i 3 mesi consecutivi (normativa CAV). Orari: Check-in dalle 15:00 (da completare obbligatoriamente online prima dell'arrivo per l'invio dati ad "Alloggiati Web"); Check-out entro le 11:00.</p>
+
+        <p><strong>ART. 3-bis – RECESSO ANTICIPATO (SOGGIORNI LUNGHI) E "REGOLA DEL MERCOLEDÌ"</strong><br>Qualora l'Ospite con contratto di lunga durata (oltre 30 giorni) decida di recedere anticipatamente e lasciare l'appartamento prima della scadenza naturale prevista, la procedura obbligatoria prevede che:<br>
+        La comunicazione formale di disdetta deve avvenire tassativamente il primo mercoledì utile.<br>
+        A partire da quel mercoledì, devono scorrere esattamente 10 giorni prima dell'effettivo rilascio dell'immobile.<br>
+        In aggiunta a questa finestra temporale di preavviso, verrà applicata una penale forfettaria pari a 1 settimana di soggiorno. <strong>Tale penale viene introdotta per coprire i costi sostenuti dal Gestore per poter offrire gli sconti e i benefit iniziali, i quali sono economicamente sostenibili e possibili unicamente se diluiti nel periodo di calcolo pattuito originariamente.</strong></p>
+
+        <p><strong>ART. 4 – CONDIZIONI DI PAGAMENTO PER PRENOTAZIONI DIRETTE</strong><br>Le seguenti modalità si applicano esclusivamente alle prenotazioni dirette:<br>
+        A) Soggiorni inferiori a 30 giorni: Il saldo totale del soggiorno deve essere corrisposto integralmente prima dell'arrivo.<br>
+        B) Soggiorni lunghi (oltre 30 giorni) - Opzioni di pagamento: L'Ospite può scegliere una delle seguenti modalità:<br>
+        - Saldo Totale Anticipato: Il pagamento dell'intero periodo in un'unica soluzione prima dell'arrivo dà diritto a uno sconto del 15% sul canone.<br>
+        - Pagamento Mensile ("Regola del Mercoledì"): Il canone della nuova mensilità deve essere saldato tassativamente il mercoledì precedente all'inizio del mese di riferimento. Questa opzione dà diritto a uno sconto del 10%.<br>
+        - Pagamento Settimanale ("Regola del Mercoledì Standard"): Il saldo della settimana successiva deve essere corrisposto il mercoledì della settimana in corso (ovvero il mercoledì copre la settimana successiva). In questa opzione si applica la tariffa standard (nessuno sconto).<br>
+        Fatturazione (Regime Forfettario): Operazione senza applicazione dell’IVA (art. 1, commi 54-89, L. 190/2014). Imposta di bollo di €2,00 a carico dell'Ospite per fatture > €77,47.</p>
+
+        <p><strong>ART. 5 – DEPOSITO CAUZIONALE E PROTEZIONE DANNI</strong><br>Al momento del check-in online (tramite Chekin.com) o all'arrivo, è obbligatorio scegliere una delle seguenti opzioni per tutelare lo spazio condiviso. Nota Bene: Per i soggiorni superiori a 1 mese va scelta obbligatoriamente la copertura della Polizza Danni più alta.<br>
+        Opzione A (Deposito Cauzionale Rimborsabile): Pagamento o blocco su carta di credito, oppure versamento in contanti a titolo infruttifero al momento dell'arrivo. L'importo sarà trattenuto fino alla fine del soggiorno e rimborsato previa verifica dello stato dell'immobile. L'importo richiesto varia in base alla durata del soggiorno:<br>
+        Soggiorni inferiori a 30 giorni: €350,00.<br>
+        Soggiorni superiori a 1 mese (oltre 30 giorni): €500,00. Nota: In caso di gestione del deposito tramite carta di credito/piattaforma online, l'operazione include una commissione di gestione non rimborsabile di €4,80 applicata dal fornitore del servizio.<br>
+        Opzione B (Polizza Protezione Danni): Acquisto di un'assicurazione (Damage Waiver) a copertura dei danni accidentali a fondo perduto. Costi e termini definiti dal fornitore in fase di selezione.<br><br>
+        <strong>SCELTA OSPITE EFFETTUATA:</strong> <span id="out_contract_art5"></span></p>
+
+        <p><strong>ART. 6 – POLITICA GREEN, SUPPLEMENTI E FAIR USE</strong><br>La nostra struttura supporta il "City Green Deal" per la neutralità climatica. L'aria condizionata non deve scendere sotto i 20°C e le finestre devono restare chiuse. È severamente vietato l'uso 24/7. Il corretto utilizzo degli impianti è monitorato attivamente tramite i nostri sistemi smart.<br>
+        A) Supplementi per Soggiorni SOTTO i 30 giorni:<br>
+        Estate (16 Maggio - 14 Ottobre): Supplemento Elettricità del 4% sul costo del pernottamento (cap massimo €80/mese).<br>
+        Inverno (15 Ottobre - 15 Maggio): Supplemento Riscaldamento del 5% sul costo del pernottamento (cap max €80/mese) per coprire gli aumenti dei costi energetici.<br>
+        B) Policy "Fair Use" sui Consumi (Soggiorni DAI 30 AI 90 giorni): È previsto un Forfait Utenze fisso di €90,00 per ogni mese (multipli di 30 giorni) e di €3,00 per ogni giorno in eccedenza, fino ad un massimo di €80,00/mese per i giorni eccedenti. La tariffa base si intende netta. Oltre le seguenti soglie di franchigia (Fair Use) contrattuali, si paga la Surcharge a consumo.<br>
+        Listino Penali "Overuse" (Extracosti a consumo per superamento soglie):<br>
+        Elettricità Extra (Tutti gli alloggi): 0,80 € / kWh<br>
+        Riscaldamento Centralizzato Extra (Nest, Suite, Studio): 0,35 € / scatto<br>
+        Riscaldamento Autonomo Gas Extra (Heritage): 1,50 € / Smc<br>
+        <strong>ESTATE (16 Maggio - 14 Ottobre) - Elettricità (A/C inclusa)</strong><br>
+        THE NOLO NEST / SUITE: 8 kWh / gg (240 kWh / mese)<br>
+        THE NOLO STUDIO: 6 kWh / gg (180 kWh / mese)<br>
+        THE NOLO HERITAGE: 3 kWh / gg (90 kWh / mese)<br>
+        <strong>INVERNO (15 Ottobre - 15 Maggio) - Riscaldamento + Elettricità (Senza A/C)</strong><br>
+        THE NOLO NEST: 25 scatti/gg (750/mese) + 6 kWh/gg<br>
+        THE NOLO SUITE: 20 scatti/gg (600/mese) + 6 kWh/gg<br>
+        THE NOLO STUDIO: 14 scatti/gg (420/mese) + 5 kWh/gg<br>
+        THE NOLO HERITAGE: 4 Smc/gg (120/mese) + 3 kWh/gg</p>
+
+        <p><strong>ART. 7 – PULIZIE, STATO LOCATIVO E REGOLE DELLA CASA</strong><br>L'immobile è consegnato in perfetto stato. Oltre al divieto assoluto di forme di discriminazione (Art. 1), vige quanto segue:<br>
+        Ospiti Registrati: Solo gli ospiti registrati sono ammessi. Violazione = allontanamento immediato.<br>
+        Vietato Fumare: Divieto assoluto. Penale di €200,00 più costi di rimozione odori.<br>
+        Animali non ammessi: Divieto assoluto. Penali per pulizia aggiuntiva e danni.<br>
+        Rumore e Feste: Feste severamente vietate. Ore di silenzio assoluto dalle 21:00 alle 07:00.<br>
+        WC Sanitrit: (Nei bagni dotati del sistema) Gettare SOLO carta igienica. Danni da uso improprio saranno interamente addebitati.<br>
+        Chiavi: Lo smarrimento comporta l'addebito del costo per il cambio serratura + una penale di €150,00.<br>
+        Servizi di Pulizia per Soggiorni Prolungati:<br>
+        Pulizia di Fine Soggiorno (oltre 13 notti): Costo obbligatorio di €80,00 (sostituisce la tariffa standard di €45).<br>
+        Servizio Intermedio Obbligatorio (oltre 13 notti): Al fine di garantire il mantenimento degli standard di qualità e di sicurezza igienico-sanitaria previsti per legge, è obbligatorio un intervento di pulizia ogni 14 giorni, al costo di €40,00 ciascuno a carico dell'Ospite. <strong>Tale momento è fondamentale per verificare la manutenzione generale dell'immobile e individuare tempestivamente eventuali guasti.</strong> Attenzione: La mancata organizzazione o il rifiuto di accesso al personale per svolgere tali interventi comporterà una penale fissa di €150,00.</p>
+
+        <p><strong>ART. 8 – RISOLUZIONE DEL CONTRATTO</strong><br>Il contratto si intende risolto di diritto con effetto immediato (con allontanamento coattivo) in caso di: mancato pagamento, violazione del divieto di subaffitto (No Subletting), presenza di ospiti non dichiarati, comportamenti discriminatori in violazione della filosofia D&I, disturbi alla quiete pubblica.</p>
+
+        <p><strong>ART. 9 – PRIVACY E FORO COMPETENTE</strong><br>I dati personali sono trattati da 2EMME RealEstate & CONSULTING nel massimo rispetto del Regolamento UE 2016/679 (GDPR), come da Informativa Estesa allegata (Allegato A). Il presente contratto è regolato dalla Legge Italiana. Per qualsiasi controversia è competente in via esclusiva il Foro di Milano.</p>
+
+        <div class="double-signature-block">
+            <p><strong>CLAUSOLE OGGETTO DI SPECIFICA APPROVAZIONE (Artt. 1341-1342 C.C.)</strong><br>L'Ospite dichiara di aver letto e di approvare specificamente le pattuizioni contenute nei seguenti articoli: Art. 1 (OTA vs Dirette); Art. 3-bis (Recesso anticipato e penale a copertura costi e benefit); Art. 4 (Pagamenti anticipati e sconti); Art. 5 (Deposito/Polizza e fee €4,80); Art. 6 (Green Policy, Monitoraggio consumi, Supplementi e Penali "Overuse"); Art. 7 (Penali fumo, animali, chiavi, ispezioni/pulizie intermedie obbligatorie e relativo rifiuto); Art. 8 (Clausola Risolutiva Espressa).</p>
+            <div style="text-align: right; margin-top: 20px;">Firma dell'Ospite per specifica approvazione: <br><span class="signature-field" id="sign_guest_specific"></span></div>
+        </div>
+
+        <div style="margin-top: 40px; display: flex; justify-content: space-between;">
+            <div style="width: 45%;"><p><strong>L'Ospite / The Guest</strong><br>Letto, approvato e sottoscritto:<br><span class="signature-field" id="sign_guest_main"></span><br>Data: <span class="out_today_date_dynamic">________</span></p></div>
+            <div style="width: 45%;">
+                <p><strong>Il Gestore / The Manager</strong><br>2EMME RealEstate & CONSULTING<br>
+                <img src="firmamatteo2.png" alt="Firma Matteo Masella" style="height:60px; margin-bottom:-10px; display:block;"><br>
+                Data: <span class="out_today_date_dynamic">________</span></p>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 50px; text-align:center;">ALLEGATO A – INFORMATIVA PRIVACY & GDPR</h3>
+        <p style="text-align:center; font-weight:bold;">Informativa estesa ai sensi del Regolamento (UE) 2016/679 (GDPR)</p>
+        <p style="font-size:0.9em; text-align:justify;">
+        <strong>1. Titolare del trattamento</strong> Il Titolare del trattamento è 2EMME RE&CONSULTING di Matteo Masella, con sede legale in Via Pietro Colletta 70, 20137 Milano (P.IVA IT13411850962). Per qualsiasi comunicazione relativa al trattamento dei dati personali è possibile contattare il Titolare via e-mail: matteo.masella@duemmeconsulting.it o per posta a: Via Pietro Colletta 70, 20137 Milano.<br><br>
+        <strong>2. Responsabile della protezione dei dati (DPO)</strong> Al momento non è stato nominato un Responsabile della Protezione dei Dati (DPO). Per richieste specifiche riguardanti la protezione dei dati contattare il Titolare ai recapiti sopra indicati.<br><br>
+        <strong>3. Finalità del trattamento e basi giuridiche</strong> I dati personali raccolti sono trattati per le seguenti finalità, con la corrispondente base giuridica:<br>
+        - Esecuzione del contratto di locazione turistica (es. gestione prenotazione, check-in/out, emissione ricevute/fatture, gestione cauzioni, gestione richieste e servizi accessori). Base giuridica: esecuzione di un contratto (art. 6(1)(b) GDPR).<br>
+        - Adempimenti di pubblica sicurezza: trasmissione delle generalità degli ospiti alla Autorità di Pubblica Sicurezza tramite il sistema “Alloggiati Web” ai sensi dell’art. 109 del T.U.L.P.S. e successive disposizioni operative. Base giuridica: obbligo legale (art. 6(1)(c) GDPR).<br>
+        - Obblighi fiscali e contabili: conservazione ed esibizione di documenti contabili, emissione di fatture e adempimenti tributari. Base giuridica: obbligo legale (art. 6(1)(c) GDPR).<br>
+        - Tutela dei diritti e della sicurezza dell’immobile: rilevamento e gestione di danni, gestione di pratiche assicurative e contenziosi. Base giuridica: esecuzione del contratto e legittimo interesse del Titolare (art. 6(1)(b) e 6(1)(f) GDPR).<br>
+        - Comunicazioni commerciali e marketing diretto (newsletter, promozioni): solo previo consenso espresso e separato dell’interessato. Base giuridica: consenso (art. 6(1)(a) GDPR).<br><br>
+        <strong>4. Tipologie di dati trattati</strong> A seconda della finalità, potranno essere trattati, tra gli altri:<br>
+        - dati identificativi (nome, cognome, data e luogo di nascita);<br>
+        - dati relativi al documento di identità (tipo, numero, data e autorità di rilascio) necessari per Alloggiati Web e verifica identità;<br>
+        - codice fiscale;<br>
+        - dati di contatto (indirizzo postale, indirizzo e-mail, numero di telefono);<br>
+        - dati contrattuali e di prenotazione (date di arrivo/partenza, codice prenotazione, numero di occupanti);<br>
+        - dati di pagamento e contabili (coordinate per bonifico, ricevute, estremi transazioni) in forma non sensibile, salvo diversa necessità;<br>
+        - eventuali dati forniti volontariamente per esigenze particolari (allergie, richieste speciali);<br>
+        - registrazioni fotografiche o documentali relative a eventuali danni (solo se rese necessarie per l’attività di documentazione e contestazione).<br><br>
+        <strong>5. Modalità di trattamento</strong> I dati sono trattati con strumenti informatici e/o cartacei, mediante procedure organizzative e logiche strettamente correlate alle finalità sopra indicate. Sono adottate misure tecniche e organizzative idonee a garantire la riservatezza, l’integrità, la disponibilità e la resilienza dei sistemi e dei servizi, tra cui controllo degli accessi, gestione degli account con privilegi limitati, backup, aggiornamenti, utilizzo di connessioni cifrate per le comunicazioni e policy interne di sicurezza.<br><br>
+        <strong>6. Destinatari dei dati e categorie di soggetti che possono venire a conoscenza dei dati</strong> I dati potranno essere comunicati a:<br>
+        - Autorità di pubblica sicurezza (tramite Alloggiati Web) e a soggetti pubblici ove richiesto dalla legge;<br>
+        - Fornitori di servizi necessari all’esecuzione del contratto (es. piattaforme di prenotazione / OTA, sistemi di payment processing, servizi di pulizia e manutenzione) in qualità di responsabili del trattamento;<br>
+        - Consulenti professionali (commercialisti, avvocati) e istituti bancari per esigenze di gestione contabile e fiscale;<br>
+        - Società terze che svolgono attività di hosting, conservazione documentale o supporto tecnologico su incarico del Titolare;<br>
+        - Autorità giudiziarie e amministrative in caso di richieste legittime. Tutti i soggetti esterni ricevono i dati in qualità di Responsabili del trattamento e sono vincolati da idonei obblighi contrattuali e di riservatezza.<br><br>
+        <strong>7. Trasferimenti internazionali di dati</strong> Qualora sia necessario trasferire dati verso Paesi terzi (extra-UE), il Titolare garantirà che il trasferimento avvenga solo verso Paesi che assicurano un livello di protezione adeguato o mediante garanzie adeguate (decisione di adeguatezza, clausole contrattuali standard approvate dalla Commissione Europea, regole aziendali vincolanti o altre misure conformi al GDPR). Su richiesta sarà fornita indicazione delle garanzie adottate.<br><br>
+        <strong>8. Periodi di conservazione</strong> I dati saranno conservati per il tempo strettamente necessario al perseguimento delle finalità per cui sono stati raccolti e nei limiti imposti dalla normativa applicabile:<br>
+        - documenti e dati fiscali e contabili: 10 anni (es. obblighi fiscali e di contabilità);<br>
+        - dati e documentazione relativi alla comunicazione Alloggiati Web e verifica identità: mantenuti in archivio secondo le prassi amministrative e comunque per un periodo non inferiore a 5 anni come buona prassi operativa per finalità probatorie in caso di controlli;<br>
+        - dati relativi a contestazioni danni e causali: per il periodo necessario alla definizione della pratica e per i termini di prescrizione legale;<br>
+        - dati trattati per finalità di marketing: fino alla revoca del consenso. Al termine dei periodi di conservazione i dati saranno cancellati o resi anonimi in modo irreversibile, salvo obblighi di legge che impongano conservazioni più lunghe.<br><br>
+        <strong>9. Diritti degli interessati</strong> L’interessato può esercitare i diritti previsti dagli artt. 15-22 del GDPR:<br>
+        - diritto di accesso ai propri dati personali;<br>
+        - diritto di rettifica dei dati inesatti;<br>
+        - diritto alla cancellazione (“diritto all’oblio”) nei casi previsti;<br>
+        - diritto alla limitazione del trattamento;<br>
+        - diritto alla portabilità dei dati (quando il trattamento è basato su consenso o contratto e i dati sono trattati con mezzi automatizzati);<br>
+        - diritto di opposizione al trattamento per motivi legittimi;<br>
+        - diritto di proporre reclamo all’Autorità di controllo (Garante per la protezione dei dati personali — www.garanteprivacy.it). Le richieste devono essere indirizzate al Titolare all’indirizzo di posta elettronica matteo.masella@duemmeconsulting.it o via posta a: Via Pietro Colletta 70, 20137 Milano. Le richieste saranno gestite nei termini e nei modi previsti dalla normativa vigente (di norma entro un mese salvo casi particolari).<br><br>
+        <strong>10. Conseguenze del mancato conferimento dei dati</strong> Il conferimento dei dati necessari per l’esecuzione del contratto e per l’adempimento degli obblighi di legge (es. invio Alloggiati Web) è obbligatorio. Il mancato conferimento può rendere impossibile la stipula o l’esecuzione del contratto (ad esempio impossibilità di effettuare il check-in o di ospitare l’interessato). Per altri dati facoltativi (es. dati per marketing) il conferimento è su base volontaria e il mancato conferimento non pregiudica l’erogazione del servizio principale.<br><br>
+        <strong>11. Misure di sicurezza</strong> Il Titolare applica misure tecniche e organizzative adeguate alla protezione dei dati personali, tra cui:<br>
+        - utilizzo di protocolli cifrati (HTTPS/TLS) per le comunicazioni on-line;<br>
+        - controllo degli accessi e gestione degli account con privilegi limitati;<br>
+        - backup regolari e policy di retention;<br>
+        - formazione e limitazione degli accessi al personale incaricato;<br>
+        - obblighi contrattuali di riservatezza per i responsabili esterni. Tali misure sono riesaminate periodicamente in funzione dell’evoluzione tecnologica e degli obblighi normativi.<br><br>
+        <strong>12. Profilazione e decisioni automatizzate</strong> Il Titolare non effettua processi decisionali basati esclusivamente su trattamenti automatizzati che producano effetti giuridici significativi per l’interessato, né attività di profilazione su larga scala senza consenso esplicito. Qualora in futuro si prevedano tali trattamenti, sarà fornita adeguata informativa e, ove richiesto, sarà acquisito il consenso.<br><br>
+        <strong>13. Aggiornamenti dell’informativa</strong> L’informativa può essere aggiornata per adeguarsi a modifiche normative o organizzative. La versione pubblicata sul sito web del Titolare contiene la data dell’ultimo aggiornamento: Gennaio 2026. Si raccomanda di consultare periodicamente la versione online.<br><br>
+        <strong>14. Ulteriori informazioni e contatti</strong> Per esercitare i diritti, per richiedere informazioni aggiuntive o per presentare reclamo: e-mail: matteo.masella@duemmeconsulting.it indirizzo postale: Via Pietro Colletta 70, 20137 Milano. Per reclami indipendenti è possibile rivolgersi al Garante per la protezione dei dati personali: www.garanteprivacy.it.
+        </p>
+    </div>
+
+    <div class="actions-bar">
+        <label style="color:#fff; cursor:pointer;"><input type="checkbox" id="chk_accept" onchange="applySignature()"> Dichiaro di accettare e firmo</label>
+        <button onclick="window.print()" class="btn-action btn-save"><svg class="svg-engraved" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg> Salva PDF</button>
+        <button onclick="sendWhatsApp()" class="btn-action btn-wa"><svg class="svg-engraved" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg> Invia WhatsApp</button>
+        <button onclick="sendEmail()" class="btn-action btn-mail"><svg class="svg-engraved" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> Invia Email</button>
+    </div>
+</div>
+
+<script>
+    let isAdmin = false; let currentNights = 0;
+    let globalAptKey = "heritage"; let globalRef = ""; let globalCheckin = ""; let globalCheckout = "";
+    let globalBasePrice = 0; let globalCleaning = 0; let globalFixedFee = 15; let globalUtenze = 0; let globalTax = 0; let globalDeposit = 350;
+
+    const aptData = {
+        suite: { name: "NOLO SUITE", denom: "B32BILO", address: "Via Bassano del Grappa 32, Milano", cat: "F. 235, Part. 71, Sub. 719, A/4", cir: "015146-CIM-07517", cin: "IT015146B43A55ZSNS", suap: "Pratica SUAP: MSLMTT...16022024-1301 - Prot. 0108214 del 21/02/2024", eSummer: 240, eWinter: 240, rWinter: "750 scatti" },
+        nest: { name: "NOLO NEST", denom: "B32MONO", address: "Via Bassano del Grappa 32, Milano", cat: "F. 235, Part. 71, Sub. 718, A/4", cir: "015146-CIM-07815", cin: "IT015146B4DX35LS4B", suap: "Pratica SUAP: MSLMTT...21022024-1135 del 28/02/2024", eSummer: 240, eWinter: 240, rWinter: "750 scatti" },
+        heritage: { name: "NOLO HERITAGE", denom: "TROOM29", address: "Via Termopili 29, Milano", cat: "F. 233, Part. 13, Sub. 9, A/4", cir: "015146-CIM-08236", cin: "IT015146B4CMAJOQGK", suap: "Pratica SUAP: MSLMTT...21022024-1149 - Prot. 0183632 del 03/04/2024", eSummer: 90, eWinter: 90, rWinter: "120 Smc" },
+        studio: { name: "CHAVEZ 1", denom: "CHAVEZ 1 SUB 715", address: "Via G. Chavez 1, Milano", cat: "F. 236, Part. 57, Sub. 715, A/3", cir: "015146-CIM-11785", cin: "IT015146B49QUV5M54", suap: "Pratica SUAP: MSLMTT...15102025-1214 - Prot. 0813140 del 15/10/2025", eSummer: 180, eWinter: 150, rWinter: "420 scatti" },
+        masotto: { name: "MASOTTO TERRACE", denom: "M4Terrace", address: "Via P. U. Masotto 4, Milano", cat: "F. 358, Part. 278, Sub. 718, A/3", cir: "015146-LNI-09408", cin: "IT015146C2WQ7GCNXX", suap: "Pratica SUAP: RMTRCR...20122024-1101 del 20/12/2024", eSummer: 180, eWinter: 150, rWinter: "270 scatti" }
+    };
+
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const cParam = urlParams.get('contract');
+        if (cParam) {
+            try {
+                let dataObj = JSON.parse(decodeURIComponent(atob(cParam)));
+                document.getElementById('login-overlay').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                document.getElementById('main-content').classList.add('unlocked');
+                loadGuestViewFromData(dataObj);
+            } catch(e) { alert("Il link del contratto non è valido. Verrai reindirizzato alla Home."); }
+        }
+    };
+
+    function checkCode() {
+        const input = document.getElementById('access-code').value;
+        if(input === "2024" || input === "162170") {
+            isAdmin = (input === "162170");
+            document.getElementById('login-overlay').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            setTimeout(() => { document.getElementById('main-content').classList.add('unlocked'); }, 50);
+            if(!isAdmin) { document.getElementById('admin-section-wrapper').style.display = 'block'; document.getElementById('admin-panel').style.maxHeight = "0"; document.getElementById('admin-lock-icon').innerHTML = '<svg class="svg-engraved" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>'; }
+            else { document.getElementById('admin-section-wrapper').style.display = 'block'; document.getElementById('admin-toggle-btn').classList.add('active'); document.getElementById('admin-panel').style.maxHeight = document.getElementById('admin-panel').scrollHeight + "px"; document.getElementById('admin-lock-icon').innerHTML = '<svg class="svg-engraved" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>'; }
+        } else { document.getElementById('error-msg').innerText = "Codice errato."; }
+    }
+
+    function checkAdminAccess() {
+        if (!isAdmin) {
+            let pwd = prompt("Area Gestore. Inserisci il PIN Host:");
+            if (pwd === "162170") { isAdmin = true; document.getElementById('admin-lock-icon').innerHTML = '<svg class="svg-engraved" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>'; document.getElementById('admin-toggle-btn').classList.add('active'); document.getElementById('admin-panel').style.maxHeight = document.getElementById('admin-panel').scrollHeight + "px"; } else { alert("PIN errato."); }
+        } else {
+            document.getElementById('admin-toggle-btn').classList.toggle('active');
+            let pnl = document.getElementById('admin-panel'); pnl.style.maxHeight = (pnl.style.maxHeight === "0px" || !pnl.style.maxHeight) ? pnl.scrollHeight + "px" : "0px";
+        }
+    }
+
+    const accordions = document.getElementsByClassName("accordion");
+    for (let i = 0; i < accordions.length; i++) {
+        if(accordions[i].id !== 'admin-toggle-btn') {
+            accordions[i].onclick = function() {
+                this.classList.toggle("active");
+                const panel = this.nextElementSibling; panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
+            };
+        }
+    }
+
+    let tempCalculatedTax = 0;
+    function calculateTax() {
+        let nights = parseInt(document.getElementById('admin_nights').value) || 0;
+        let guests = parseInt(document.getElementById('admin_guests').value) || 0;
+        if (nights > 0 && guests > 0) {
+            let taxNights = nights > 14 ? 14 : nights;
+            tempCalculatedTax = document.getElementById('admin_exemption').value === "1" ? 0 : (taxNights * guests * 9.50);
+        } else { tempCalculatedTax = 0; }
+    }
+
+    function calculateDates(source) {
+        const checkinEl = document.getElementById('admin_checkin'); const checkoutEl = document.getElementById('admin_checkout'); const nightsEl = document.getElementById('admin_nights');
+        if (!checkinEl.value) return; const checkinDate = new Date(checkinEl.value);
+        if (source === 'checkout' && checkoutEl.value) {
+            const checkoutDate = new Date(checkoutEl.value); const diffDays = Math.ceil((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24));
+            if(diffDays > 0) { nightsEl.value = diffDays; calculateTax(); } 
+        } else if ((source === 'checkin' || source === 'nights') && nightsEl.value) {
+            if (parseInt(nightsEl.value) > 0) { const checkoutDate = new Date(checkinDate); checkoutDate.setDate(checkoutDate.getDate() + parseInt(nightsEl.value)); checkoutEl.value = checkoutDate.toISOString().split('T')[0]; calculateTax(); }
+        }
+    }
+
+    function getSeason(dateStr) {
+        if(!dateStr) return 'winter';
+        const d = new Date(dateStr);
+        const month = d.getMonth() + 1; const day = d.getDate();
+        if ((month > 5 || (month === 5 && day >= 16)) && (month < 10 || (month === 10 && day <= 14))) return 'summer';
+        return 'winter';
+    }
+
+    function openCostsModal() {
+        currentNights = parseInt(document.getElementById('admin_nights').value) || 0;
+        const checkinStr = document.getElementById('admin_checkin').value;
+        const price = parseFloat(document.getElementById('admin_price').value) || 0;
+        if(currentNights === 0 || !checkinStr || price === 0) { alert("Compila Date, Notti e Prezzo Base."); return; }
+
+        document.getElementById('crud_base').value = price.toFixed(2);
+        
+        let baseCleaning = currentNights < 14 ? 45 : 80;
+        let numIntermedie = currentNights >= 14 ? Math.floor((currentNights - 1) / 14) : 0;
+        let costoIntermedie = 0;
+        let fullCount = 0, halfCount = 0, freeCount = 0;
+
+        for (let i = 1; i <= numIntermedie; i++) {
+            if (i <= 2) { costoIntermedie += 40; fullCount++; }
+            else if (i <= 4) { costoIntermedie += 20; halfCount++; }
+            else { freeCount++; }
+        }
+
+        let totalCleaning = baseCleaning + costoIntermedie;
+        document.getElementById('crud_cleaning').value = totalCleaning.toFixed(2); 
+        
+        if (numIntermedie > 0) {
+            let parts = [];
+            if (fullCount > 0) parts.push(`${fullCount} Full (€40)`);
+            if (halfCount > 0) parts.push(`${halfCount} Half (€20)`);
+            if (freeCount > 0) parts.push(`${freeCount} Grat. (€0)`);
+            document.getElementById('crud_cleaning_desc').innerText = `Finale €80 + ${parts.join(' + ')}`;
+        } else {
+            document.getElementById('crud_cleaning_desc').innerText = currentNights < 14 ? "Finale: €45" : "Finale: €80";
+        }
+        
+        document.getElementById('crud_tax').value = tempCalculatedTax.toFixed(2);
+
+        const isSummer = getSeason(checkinStr) === 'summer';
+        let calcUtenze = 0; let descUtenze = "";
+        if (currentNights < 30) {
+            let perc = isSummer ? 0.04 : 0.05; calcUtenze = price * perc; if (calcUtenze > 80) calcUtenze = 80;
+            descUtenze = isSummer ? `Estate +4% (Cap €80)` : `Inverno +5% (Cap €80)`;
+        } else {
+            let months = Math.floor(currentNights / 30); let extraDays = currentNights % 30; let extraCost = Math.min(80, extraDays * 3);
+            calcUtenze = (months * 90) + extraCost; descUtenze = `Forfait (€90/mese + €3/gg extra)`;
+        }
+        document.getElementById('crud_utilities').value = calcUtenze.toFixed(2); document.getElementById('crud_utilities_desc').innerText = descUtenze;
+        document.getElementById('crud_deposit').value = currentNights < 30 ? 350 : 500; document.getElementById('crud_deposit_desc').innerText = currentNights < 30 ? "" : "Obbligo Polizza";
+        document.getElementById('discountSimResult').style.display = 'none';
+        recalculateAdminTotal(); document.getElementById('costModal').style.display = 'flex';
+    }
+
+    function recalculateAdminTotal() {
+        let b = parseFloat(document.getElementById('crud_base').value) || 0; let c = parseFloat(document.getElementById('crud_cleaning').value) || 0;
+        let f = parseFloat(document.getElementById('crud_fixed').value) || 0; let u = parseFloat(document.getElementById('crud_utilities').value) || 0;
+        let t = parseFloat(document.getElementById('crud_tax').value) || 0;
+        document.getElementById('crud_total_val').innerText = (b + c + f + u + t).toFixed(2);
+    }
+
+    function simulateDiscountsAdmin() {
+        let b = parseFloat(document.getElementById('crud_base').value) || 0;
+        document.getElementById('sim_monthly').innerText = (b * 0.10).toFixed(2); document.getElementById('sim_total').innerText = (b * 0.15).toFixed(2);
+        document.getElementById('discountSimResult').style.display = 'block';
+    }
+
+    function confirmAndGenerateRealLink() {
+        let contractData = {
+            aptKey: document.getElementById('apt-select').value, ref: document.getElementById('admin_ref').value || "ND",
+            checkin: document.getElementById('admin_checkin').value, checkout: document.getElementById('admin_checkout').value,
+            nights: currentNights, base: parseFloat(document.getElementById('crud_base').value) || 0,
+            cleaning: parseFloat(document.getElementById('crud_cleaning').value) || 0, fixed: parseFloat(document.getElementById('crud_fixed').value) || 0,
+            utenze: parseFloat(document.getElementById('crud_utilities').value) || 0, tax: parseFloat(document.getElementById('crud_tax').value) || 0,
+            deposit: parseFloat(document.getElementById('crud_deposit').value) || 350
+        };
+        let encodedStr = btoa(encodeURIComponent(JSON.stringify(contractData)));
+        let currentUrl = window.location.href.split('?')[0].split('#')[0];
+        if (currentUrl.startsWith('file://')) { currentUrl = "https://2mapartments.netlify.app/"; }
+        let realLink = currentUrl + "?contract=" + encodedStr;
+        document.getElementById('costModal').style.display = 'none'; document.getElementById('admin-section-wrapper').style.display = 'none';
+        document.getElementById('real_generated_link').value = realLink; document.getElementById('link-generated-screen').style.display = 'block';
+    }
+
+    function copyRealLink() {
+        const linkInput = document.getElementById('real_generated_link'); linkInput.select(); linkInput.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(linkInput.value); alert("Link copiato! Invialo al cliente.");
+    }
+    function openRealLink() { window.open(document.getElementById('real_generated_link').value, "_self"); }
+
+    function loadGuestViewFromData(data) {
+        document.getElementById('admin-section-wrapper').style.display = 'none';
+        globalAptKey = data.aptKey; globalRef = data.ref; globalCheckin = data.checkin; globalCheckout = data.checkout; currentNights = data.nights;
+        globalBasePrice = data.base; globalCleaning = data.cleaning; globalFixedFee = data.fixed; globalUtenze = data.utenze; globalTax = data.tax; globalDeposit = data.deposit;
+
+        const apt = aptData[globalAptKey];
+        document.getElementById('doc_title').innerText = apt.cat.includes("A/4") || apt.cat.includes("A/3") ? "CONTRATTO DI LOCAZIONE TURISTICA (CAV)" : "CONTRATTO DI LOCAZIONE AD USO TURISTICO";
+        
+        document.getElementById('out_apt_name').innerText = apt.name;
+        document.getElementById('out_apt_denom').innerText = apt.denom;
+        document.getElementById('out_apt_address').innerText = apt.address;
+        document.getElementById('out_apt_cat').innerText = apt.cat;
+        document.getElementById('out_apt_suap').innerText = apt.suap;
+        document.getElementById('out_apt_cir').innerText = apt.cir;
+        document.getElementById('out_apt_cin').innerText = apt.cin;
+        
+        document.getElementById('out_ref').innerText = globalRef;
+        
+        let c_in = globalCheckin ? globalCheckin.split('-').reverse().join('/') : "gg/mm/aaaa";
+        let c_out = globalCheckout ? globalCheckout.split('-').reverse().join('/') : "gg/mm/aaaa";
+        
+        document.getElementById('out_checkin').innerText = c_in; document.getElementById('out_checkout').innerText = c_out; document.getElementById('out_nights').innerText = currentNights;
+        document.getElementById('out_checkin_inline').innerText = c_in; document.getElementById('out_checkout_inline').innerText = c_out; document.getElementById('out_nights_inline').innerText = currentNights;
+        
+        document.getElementById('out_p_original_base').innerText = globalBasePrice.toFixed(2);
+        document.getElementById('out_p_cleaning').innerText = globalCleaning.toFixed(2); document.getElementById('out_p_fisso').innerText = globalFixedFee.toFixed(2);
+        document.getElementById('out_p_utenze').innerText = globalUtenze.toFixed(2); document.getElementById('out_p_utenze_label').innerText = currentNights < 30 ? "Surcharge Rischio Utenze:" : "Forfait Utenze:";
+        document.getElementById('out_p_tax').innerText = globalTax.toFixed(2); document.getElementById('out_p_tax_inline').innerText = globalTax.toFixed(2);
+
+        let art6HTML = "";
+        if(currentNights < 30) {
+            document.getElementById('row_fair_use').style.display = 'none';
+        } else {
+            document.getElementById('row_fair_use').style.display = 'table-row';
+            document.getElementById('out_p_fairuse').innerHTML = `<strong>Franchigie Fair Use Incluse nel Forfait:</strong><br>Estate: ${apt.eSummer} kWh/mese<br>Inverno: ${apt.eWinter} kWh/mese + ${apt.rWinter}`;
+        }
+
+        const depSelect = document.getElementById('g_deposit_choice'); depSelect.innerHTML = "";
+        if(currentNights < 30) {
+            depSelect.add(new Option("Scegli un'opzione di deposito...", ""));
+            depSelect.add(new Option("Opzione A: Deposito bloccato su carta (€350)", "Opzione A"));
+            depSelect.add(new Option("Opzione B: Acquisto Polizza Assicurativa Danni", "Opzione B")); 
+            depSelect.disabled = false;
+        } else {
+            depSelect.add(new Option("Obbligatorio: Deposito €500 + Polizza Danni Massimale Alto", "Obbligatorio")); 
+            depSelect.disabled = true;
+        }
+        
+        const benSelect = document.getElementById('g_benefit_choice'); benSelect.innerHTML = "";
+        if(currentNights >= 30 && currentNights <= 60) {
+            benSelect.add(new Option("Scegli il tuo Benefit...", ""));
+            benSelect.add(new Option("Sconto 50% sul costo del Parcheggio", "Sconto 50% Parcheggio"));
+            benSelect.add(new Option("Costi Registrazione Contratto Omaggiati", "Registrazione Omaggiata"));
+            document.getElementById('guest_benefit_box').style.display = 'block';
+        } else if(currentNights > 60) {
+            benSelect.add(new Option("Scegli il tuo Benefit...", ""));
+            benSelect.add(new Option("Parcheggio 100% GRATUITO", "Parcheggio 100% GRATUITO"));
+            benSelect.add(new Option("Costi Registrazione Contratto Omaggiati", "Registrazione Omaggiata"));
+            document.getElementById('guest_benefit_box').style.display = 'block';
+        } else { document.getElementById('guest_benefit_box').style.display = 'none'; }
+
+        document.getElementById('guest_payment_plan_box').style.display = currentNights >= 30 ? 'block' : 'none';
+
+        updateGuestPrice(); onNationalityChange();
+        const today = new Date(); const datesDynamic = document.getElementsByClassName('out_today_date_dynamic');
+        for(let i=0; i<datesDynamic.length; i++){ datesDynamic[i].innerText = today.toLocaleDateString('it-IT'); }
+        document.getElementById('guest-contract-view').style.display = 'block';
+    }
+
+    function updateGuestDepositChoice() {
+        const choice = document.getElementById('g_deposit_choice').value; let text = "";
+        if (choice === "Opzione A") { text = "L'Ospite ha selezionato l'<strong>Opzione A (Deposito Cauzionale Rimborsabile)</strong>: Blocco su carta di credito di <strong>€350,00</strong> a titolo infruttifero al momento dell'arrivo. L'importo sarà trattenuto fino alla fine del soggiorno e rimborsato previa verifica dello stato dell'immobile. <em>Nota: L'operazione include una commissione di gestione non rimborsabile di €4,80 applicata dal fornitore del servizio.</em>"; }
+        else if (choice === "Opzione B") { text = "L'Ospite ha selezionato l'<strong>Opzione B (Polizza Protezione Danni)</strong>: Acquisto di un'assicurazione (Damage Waiver) a copertura dei danni accidentali a fondo perduto. Costi e termini definiti dal fornitore in fase di selezione."; }
+        else if (choice === "Obbligatorio") { text = "Trattandosi di un soggiorno superiore a 30 giorni, l'Ospite accetta la trattenuta obbligatoria di un <strong>Deposito Cauzionale di €500,00</strong> su carta di credito (inclusa fee di €4,80 del fornitore) unitamente alla sottoscrizione obbligatoria della <strong>Polizza Protezione Danni al massimale più alto</strong>."; }
+        else { text = "<em>[In attesa di scelta dell'ospite]</em>"; }
+        document.getElementById('out_contract_art5').innerHTML = text;
+    }
+
+    function onNationalityChange() {
+        const nat = document.getElementById('g_nationality').value; const cfBox = document.getElementById('box_cf'); const cfDisplay = document.getElementById('out_cf_display'); const docSelect = document.getElementById('g_doc_type');
+        docSelect.innerHTML = ""; 
+        if(nat === 'it') {
+            cfBox.style.display = 'block'; cfDisplay.style.display = 'inline'; docSelect.add(new Option("Carta d'Identità", "Carta d'Identità")); docSelect.add(new Option("Passaporto", "Passaporto")); docSelect.add(new Option("Patente di Guida", "Patente di Guida"));
+        } else if (nat === 'eu') {
+            cfBox.style.display = 'none'; cfDisplay.style.display = 'none'; document.getElementById('g_cf').value = ""; docSelect.add(new Option("Carta d'Identità", "Carta d'Identità")); docSelect.add(new Option("Passaporto", "Passaporto"));
+        } else {
+            cfBox.style.display = 'none'; cfDisplay.style.display = 'none'; document.getElementById('g_cf').value = ""; docSelect.add(new Option("Passaporto", "Passaporto"));
+        }
+        updateGuestText();
+    }
+
+    function updateGuestPrice() {
+        let discountPerc = 0; let label = "";
+        if(currentNights >= 30) {
+            const plan = document.getElementById('g_payment_plan').value;
+            if(plan === 'monthly') { discountPerc = 0.10; label = "(-10%)"; } if(plan === 'full') { discountPerc = 0.15; label = "(-15%)"; }
+        }
+        let discountAmount = globalBasePrice * discountPerc; 
+        let newBase = globalBasePrice - discountAmount; 
+        let newTotal = newBase + globalCleaning + globalFixedFee + globalUtenze + globalTax;
+        
+        document.getElementById('out_p_original_base').innerText = globalBasePrice.toFixed(2);
+        if(discountAmount > 0) {
+            document.getElementById('row_discount').style.display = 'table-row';
+            document.getElementById('out_p_discount_label').innerText = label;
+            document.getElementById('out_p_discount_amount').innerText = discountAmount.toFixed(2);
+        } else {
+            document.getElementById('row_discount').style.display = 'none';
+        }
+        document.getElementById('out_p_total').innerText = newTotal.toFixed(2);
+    }
+
+    function updateGuestText() {
+        document.getElementById('out_name').innerText = document.getElementById('g_name').value || "________"; document.getElementById('out_surname').innerText = document.getElementById('g_surname').value || "________";
+        document.getElementById('out_dob').innerText = document.getElementById('g_dob').value ? document.getElementById('g_dob').value.split('-').reverse().join('/') : "________";
+        document.getElementById('out_city_birth').innerText = document.getElementById('g_city_birth').value || "________";
+        document.getElementById('out_residence_address').innerText = document.getElementById('g_residence_address').value || "________";
+        document.getElementById('out_residence_city').innerText = document.getElementById('g_residence_city').value || "________";
+        document.getElementById('out_residence_country').innerText = document.getElementById('g_residence_country').value || "________";
+        document.getElementById('out_doc_type').innerText = document.getElementById('g_doc_type').value || "________"; document.getElementById('out_doc_num').innerText = document.getElementById('g_doc_num').value || "________";
+        if (document.getElementById('g_nationality').value === 'it') { document.getElementById('out_cf').innerText = document.getElementById('g_cf').value || "________"; }
+        
+        updateGuestDepositChoice();
+        
+        if(currentNights >= 30) {
+            document.getElementById('contract_benefits_box').style.display = 'block';
+            let bChoice = document.getElementById('g_benefit_choice').value || "[Nessun benefit selezionato]";
+            document.getElementById('out_contract_benefits_text').innerHTML = `<strong>Inclusi di Default:</strong> Welcome Pack Premium (Soft & Alcolici) & Pulizie Intermedie.<br><strong>Benefit Esclusivo Scelto:</strong> ${bChoice}`;
+        } else { document.getElementById('contract_benefits_box').style.display = 'none'; }
+
+        if(document.getElementById('chk_accept').checked) applySignature();
+    }
+
+    function applySignature() {
+        const chk = document.getElementById('chk_accept'); const sigName = `${document.getElementById('g_name').value} ${document.getElementById('g_surname').value}`.trim();
+        if(chk.checked && sigName === "") { alert("Compila Nome e Cognome prima di firmare."); chk.checked = false; return; }
+        document.getElementById('sign_guest_main').innerText = chk.checked ? sigName : ""; document.getElementById('sign_guest_specific').innerText = chk.checked ? sigName : "";
+    }
+
+    function getSummaryText() {
+        let name = document.getElementById('g_name').value || "Ospite";
+        return `Buongiorno, sono ${name}. Ho appena compilato e firmato il contratto per la prenotazione ${globalRef}. Attendo conferma, grazie!`;
+    }
+
+    function sendWhatsApp() {
+        if(!document.getElementById('chk_accept').checked) { alert("Firma il contratto spuntando la casella in basso prima di inviarlo."); return; }
+        let text = getSummaryText(); window.open(`https://wa.me/393756368333?text=${encodeURIComponent(text)}`);
+    }
+
+    function sendEmail() {
+        if(!document.getElementById('chk_accept').checked) { alert("Firma il contratto spuntando la casella in basso prima di inviarlo."); return; }
+        let subject = `Contratto Firmato - Rif: ${globalRef}`; let text = getSummaryText() + "\n\n(Allega il PDF salvato)";
+        window.open(`mailto:matteo.masella@duemmeconsulting.it?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`);
+    }
+</script>
 </body>
 </html>
